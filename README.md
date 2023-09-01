@@ -5,7 +5,7 @@
 請參考: https://github.com/SDChatBot/SDCB_back
 ## Second. 前端
 ### 1. 下載本專案(需要擁有git 指令)
-    git clone https://github.com/SDChatBot/SDCB.git
+    git clone https://github.com/SDChatBot/vite_SDCB.git
 下載完後記得進入到正確的專案資料夾中，不然會出問題
 
 
