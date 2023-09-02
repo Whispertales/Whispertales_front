@@ -7,9 +7,15 @@ export const enum apis {
     GetImagePrompt = `http://localhost:7943/prompt`,
 
 
-    // // //use
+    // //use 192.168.1.26
     // ImageBase64Url = `http://192.168.1.26:7943/image`,
-    // SocketioServer = `http://192.168.1.26:4692`,
+    // SocketioServer = `http://192.168.1.26:2764`,
     // GetImagePrompt = `http://192.168.1.26:7943/prompt`,
+
+    // //use2 163.13.201.153
+    // ImageBase64Url = `http://163.13.201.153:7943/image`,
+    // SocketioServer = `http://163.13.201.153:2764`,
+    // GetImagePrompt = `http://163.13.201.153:7943/prompt`,
+
 }
 
