@@ -1,0 +1,61 @@
+/*Instruction.css*/
+
+.main heading {
+    font-family: 'Arial';
+    font-size: 30px;
+}
+
+.heading {
+    font-family: '標楷體';
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.paragraph {
+    font-family: '宋体';
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.fixed-ratio-image {
+    width: 700px;
+    height: 450px;
+}
+
+.centered-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rounded-rectangle {
+    border-radius: 20px;
+}
+
+.my-text {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.instruction-container {
+    background-image: url('https://i.imgur.com/hFF8mSo.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.backgroundAboutUs {
+    background-color:rgba(83, 79, 84, 1);
+    color:rgba(232, 236, 239, 1);
+}
+.linkcolor{
+    color:rgba(232, 236, 239, 1);
+    font-style:italic;
+}
+
+.ima {
+    width: 400px;
+    border-style: double;
+}
