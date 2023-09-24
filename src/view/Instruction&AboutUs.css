@@ -59,17 +59,17 @@
     width: 400px;
     border-style: double;
 }
-.inputright {
+/* .inputright {
     position: absolute;
     top: 8px;
     right: 16px;
     font-size: 18px;
-}
-.inputr1 {
+} */
+/* .inputr1 {
     width:300px;
     font-size: 18px;
-}
-.chatright {
+} */
+/* .chatright {
     position: absolute;
     top: 30px;
     right: 380px;
@@ -80,8 +80,8 @@
     top: 8px;
     left: 16px;
     font-size: 18px;
-}
-.imagesize {
+} */
+/* .imagesize {
     top: 20px;
     left: 50;
-}
+} */

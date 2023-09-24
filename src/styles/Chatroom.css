@@ -4,9 +4,24 @@
   right: 380px;
   font-size: 18px;
 }
+
 .imageleft {
   position: absolute;
   top: 8px;
   left: 16px;
   font-size: 18px;
+}
+
+.chatroom {
+  position: fixed;
+  top: 0;
+  right: 20px;
+  width: 300px;
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-left: 1px solid #ccc;
+  height: 100vh;
+  /* 使其高度與視窗高度相同 */
+  overflow-y: auto;
+  /* 如果內容過多，顯示滾動條 */
 }

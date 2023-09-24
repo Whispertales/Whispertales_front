@@ -1,0 +1,23 @@
+.inputright {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  font-size: 18px;
+}
+.inputr1 {
+  width: 300px;
+  font-size: 18px;
+}
+.imagesize {
+  top: 20px;
+  left: 50;
+}
+.button-container {
+  position: fixed;
+  border: 2px solid #4CAF50;
+  /* border: none; */
+  padding: 5px;
+  display: inline-block;
+  bottom: 20px;
+  right: 20px;
+}

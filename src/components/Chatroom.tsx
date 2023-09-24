@@ -45,22 +45,26 @@ export default function Chatroom(){
         setInputValue('');
     };
 
-    const handleClear = () => {
+    const handleClearButton = () => {
         setMessages([]);
     };
 
     return (
         <div>
-            <ul className='chatright'>
-                {messages.map((msg, i) => (
-                    <li  key={i} className={`message ${msg.isBot ? 'bot' : 'user'}`}>
-                        <span className="text ">{msg.text}</span>
-                    </li>
-                ))}
-            </ul>
-            <button onClick={handleClear} >Clear Chat</button>
-            <Image className='imageleft' inputValue={inputValue} handleSubmit_Chatroom={handleSubmit_Chatroom} handleInputChange_Chatroom={handleInputChange_Chatroom}></Image>
+            <div className='chatroom'>
+                <ul className='chatright'>
+                    {messages.map((msg, i) => (
+                        <li key={i} className={`message ${msg.isBot ? 'bot' : 'user'}`}>
+                            <span className="text ">{msg.text}</span>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+            <div>
+                <Image className='imageleft' inputValue={inputValue} handleSubmit_Chatroom={handleSubmit_Chatroom} handleInputChange_Chatroom={handleInputChange_Chatroom} ClearButton={handleClearButton}></Image>
+            </div>
         </div>
+        
     );
 }
 
