@@ -49,15 +49,15 @@ export default function Chatroom(){
 
     return (
         <div>
-            <ul>
+            <ul className='chatright'>
                 {messages.map((msg, i) => (
-                    <li key={i} className={`message ${msg.isBot ? 'bot' : 'user'}`}>
-                        <span className="text">{msg.text}</span>
+                    <li  key={i} className={`message ${msg.isBot ? 'bot' : 'user'}`}>
+                        <span className="text ">{msg.text}</span>
                     </li>
                 ))}
             </ul>
             <button onClick={handleClear}>Clear Chat</button>
-            <Image inputValue={inputValue} handleSubmit_Chatroom={handleSubmit_Chatroom} handleInputChange_Chatroom={handleInputChange_Chatroom}></Image>
+            <Image className='imageleft' inputValue={inputValue} handleSubmit_Chatroom={handleSubmit_Chatroom} handleInputChange_Chatroom={handleInputChange_Chatroom}></Image>
         </div>
     );
 }

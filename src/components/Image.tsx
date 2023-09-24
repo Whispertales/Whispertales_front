@@ -35,12 +35,13 @@ export default function Image({ inputValue, handleSubmit_Chatroom, handleInputCh
 
     return (
         <div>
-            <form onSubmit={handleSubmit_Chatroom}>
-                <input style={{ fontSize: `20px` }} type="text" value={inputValue} onChange={handleInputChange_Chatroom} />
+            <form className='inputright' onSubmit={handleSubmit_Chatroom}>
+                <input className='inputr1' style={{ fontSize: `20px` }} type="text" value={inputValue} onChange={handleInputChange_Chatroom} />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <button type="submit" onClick={handleClick}>Send</button>
             </form>
             <br />
-            <img src={imageSrc} alt="你生成出來的圖片" />
+            <img className='imagesize' src={imageSrc} alt="你生成出來的圖片" />
         </div>
     );
 }

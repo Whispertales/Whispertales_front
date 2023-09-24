@@ -46,9 +46,9 @@
     background-position: center;
 }
 
-.backgroundAboutUs {
-    background-color:rgba(83, 79, 84, 1);
-    color:rgba(232, 236, 239, 1);
+.background {
+    background-color:rgba(34, 34, 34, 1);
+    color:rgba(221, 221, 221, 1)
 }
 .linkcolor{
     color:rgba(232, 236, 239, 1);
@@ -58,4 +58,31 @@
 .ima {
     width: 400px;
     border-style: double;
+}
+.inputright {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+    font-size: 18px;
+}
+.inputr1 {
+    width:300px;
+    font-size: 18px;
+}
+.chatright {
+    position: absolute;
+    top: 30px;
+    right: 380px;
+    font-size: 18px;
+ 
+}
+.imageleft {
+    position: absolute;
+    top: 8px;
+    left: 16px;
+    font-size: 18px;
+}
+.imagesize {
+    top: 20px;
+    left: 50;
 }
