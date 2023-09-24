@@ -1,0 +1,12 @@
+.chatright {
+  position: absolute;
+  top: 30px;
+  right: 380px;
+  font-size: 18px;
+}
+.imageleft {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+  font-size: 18px;
+}

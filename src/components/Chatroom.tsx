@@ -2,6 +2,8 @@ import { useEffect, useState, useRef } from 'react';
 import {io, Socket} from 'socket.io-client';
 import { apis } from '../utils/tools/api';
 
+import '../styles/Chatroom.css';
+
 import Image from './Image';
 
 export default function Chatroom(){
@@ -56,7 +58,7 @@ export default function Chatroom(){
                     </li>
                 ))}
             </ul>
-            <button onClick={handleClear}>Clear Chat</button>
+            <button onClick={handleClear} >Clear Chat</button>
             <Image className='imageleft' inputValue={inputValue} handleSubmit_Chatroom={handleSubmit_Chatroom} handleInputChange_Chatroom={handleInputChange_Chatroom}></Image>
         </div>
     );
