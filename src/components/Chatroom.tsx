@@ -52,7 +52,7 @@ export default function Chatroom(){
     return (
         <div>
             <div className='chatroom'>
-                <ul className='chatright'>
+                <ul className='chat'>
                     {messages.map((msg, i) => (
                         <li key={i} className={`message ${msg.isBot ? 'bot' : 'user'}`}>
                             <span className="text ">{msg.text}</span>

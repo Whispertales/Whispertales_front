@@ -12,7 +12,7 @@
   font-size: 18px;
 }
 
-.chatroom {
+/* .chatroom {
   position: fixed;
   top: 0;
   right: 20px;
@@ -21,7 +21,24 @@
   padding: 20px;
   border-left: 1px solid #ccc;
   height: 100vh;
+  overflow-y: auto;
+} */
+
+.chatroom {
+  position: fixed;
+  top: 0;
+  right: 20px;
+  width: 300px;
+  background-color: rgba(240, 240, 240, 0.5);
+  padding: 20px;
+  border-left: 1px solid #ccc;
+  height: 100vh;
   /* 使其高度與視窗高度相同 */
   overflow-y: auto;
   /* 如果內容過多，顯示滾動條 */
+}
+
+
+.chat {
+  z-index: 99
 }
