@@ -29,16 +29,14 @@
   position: fixed;
   top: 0px;
   right: 0px;
-  width: 100%; /* 設定寬度為100%，但不會超過max-width的值 */
-  max-width: 300px; /* 設定最大寬度為300px */
+  width: 100%;
+  max-width: 300px;
   background-color: rgba(240, 240, 240, 0.5);
   padding: 20px;
   border-left: 1px solid #ccc;
   height: 100vh;
-  /* 使其高度與視窗高度相同 */
   overflow-y: auto;
   z-index: 0;
-  /* 如果內容過多，顯示滾動條 */
 }
 
 .chatroom ul {
