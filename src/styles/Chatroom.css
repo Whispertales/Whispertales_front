@@ -37,6 +37,10 @@
     height: 100vh;
     overflow-y: auto;
     z-index: 0;
+    border-left-style: solid;
+    border-left-width: 5px;
+    border-left-color: white;
+    
 }
 
 .chatroom ul {
@@ -87,4 +91,9 @@ input[type="range"] {
 
 .chatroom-color {
     background-color: #2F2D30;
+}
+.chatroom-border{
+    border-style: solid;
+    border-width: 10px;
+    border-color: red;
 }

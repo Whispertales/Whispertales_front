@@ -51,11 +51,13 @@ export default function Chatroom(){
 
     return (
         <div className='chatroom-color'>
-            <div className='chatroom vertical-divider line'>
-                <ul className='horizontal-divider line controls'>
+            <div className='chatroom'>
+                <ul>
                     {messages.map((msg, i) => (
                         <li key={i} className={`message ${msg.isBot ? 'bot' : 'user'}`}>
+                            <div>
                             <span className="text ">{msg.text}</span>
+                            </div>
                         </li>
                     ))}
                 </ul>
@@ -64,7 +66,7 @@ export default function Chatroom(){
                 <Image className='imageleft' inputValue={inputValue} handleSubmit_Chatroom={handleSubmit_Chatroom} handleInputChange_Chatroom={handleInputChange_Chatroom} ClearButton={handleClearButton}></Image>
             </div>
         </div>
-        
+
     );
 }
 
