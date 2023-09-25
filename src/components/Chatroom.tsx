@@ -50,7 +50,7 @@ export default function Chatroom(){
     };
 
     return (
-        <div>
+        <div className='chatroom-color'>
             <div className='chatroom'>
                 <ul className='chat'>
                     {messages.map((msg, i) => (
