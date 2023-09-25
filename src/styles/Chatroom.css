@@ -1,16 +1,17 @@
 .chatright {
-  position: absolute;
-  top: 30px;
-  right: 380px;
-  font-size: 18px;
+    position: absolute;
+    top: 30px;
+    right: 380px;
+    font-size: 18px;
 }
 
 .imageleft {
-  position: absolute;
-  top: 8px;
-  left: 16px;
-  font-size: 18px;
+    position: absolute;
+    top: 8px;
+    left: 16px;
+    font-size: 18px;
 }
+
 
 /* .chatroom {
   position: fixed;
@@ -25,6 +26,7 @@
 } */
 
 .chatroom {
+<<<<<<< HEAD
   position: fixed;
   top: 0px;
   right: 0px;
@@ -51,4 +53,25 @@
   position: relative;
   margin-bottom: 10px;
   z-index: 2;
+=======
+    position: fixed;
+    top: 0;
+    right: 20px;
+    width: 300px;
+    background-color: rgba(240, 240, 240, 0.5);
+    padding: 20px;
+    border-left: 1px solid #ccc;
+    height: 100vh;
+    /* 使其高度與視窗高度相同 */
+    overflow-y: auto;
+    /* 如果內容過多，顯示滾動條 */
+}
+
+.chat {
+    z-index: 99
+}
+
+.chatroom-color {
+    background-color: #222222
+>>>>>>> dc8dd2480a812777e8e1cc6f255121dbf74f3002
 }
