@@ -40,9 +40,8 @@ export default function Image({ inputValue, handleSubmit_Chatroom, handleInputCh
         <div>
             {/* className='inputright' */}
             <form className='chatroom' onSubmit={handleSubmit_Chatroom}>
-                <input className='inputr1' style={{ fontSize: `20px` }} type="text" value={inputValue} onChange={handleInputChange_Chatroom} />
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <div className='button-container'>
+                    <input style={{ fontSize: `20px` }} type="text" value={inputValue} onChange={handleInputChange_Chatroom} />
                     {/* Clear Button */}
                     <button onClick={ClearButton} >
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-trash3" viewBox="0 0 16 16">
