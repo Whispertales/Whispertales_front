@@ -71,14 +71,20 @@
 .horizontal-divider {
     position: relative;
     height: 1px;
-    width: 100%;
+    width: 93%;
     background-color: white;
 }
 
-.chatroom-color {
-    background-color: #2F2D30;
+.controls {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
 }
 
 input[type="range"] {
     width: 50%;
+}
+
+.chatroom-color {
+    background-color: #2F2D30;
 }
