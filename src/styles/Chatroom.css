@@ -26,28 +26,59 @@
 } */
 
 .chatroom {
-  position: fixed;
-  top: 0px;
-  right: 0px;
-  width: 100%;
-  max-width: 300px;
-  background-color: rgba(240, 240, 240, 0.5);
-  padding: 20px;
-  border-left: 1px solid #ccc;
-  height: 100vh;
-  overflow-y: auto;
-  z-index: 0;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    width: 100%;
+    max-width: 300px;
+    background-color: rgba(240, 240, 240, 0.5);
+    padding: 20px;
+    border-left: 1px solid #ccc;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 0;
 }
 
 .chatroom ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  z-index: 1;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
 }
 
 .chatroom li {
-  position: relative;
-  margin-bottom: 10px;
-  z-index: 2;
+    position: relative;
+    margin-bottom: 10px;
+    z-index: 2;
+}
+
+.vertical-divider {
+    position: relative;
+    width: 1px;
+    height: 93%;
+    background-color: white;
+}
+
+.line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: white;
+    width: 0%;
+    transform: translateX(-90%);
+}
+
+.horizontal-divider {
+    position: relative;
+    height: 1px;
+    width: 100%;
+    background-color: white;
+}
+
+.chatroom-color {
+    background-color: #2F2D30;
+}
+
+input[type="range"] {
+    width: 50%;
 }
