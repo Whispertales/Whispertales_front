@@ -12,26 +12,13 @@
     font-size: 18px;
 }
 
-
-/* .chatroom {
-  position: fixed;
-  top: 0;
-  right: 20px;
-  width: 300px;
-  background-color: #f0f0f0;
-  padding: 20px;
-  border-left: 1px solid #ccc;
-  height: 100vh;
-  overflow-y: auto;
-} */
-
 .chatroom {
     position: fixed;
     top: 0px;
     right: 0px;
     width: 100%;
     max-width: 300px;
-    background-color: rgba(240, 240, 240, 0.5);
+    background-color: rgb(219, 61, 61);
     padding: 20px;
     border-left: 1px solid #ccc;
     height: 100vh;
@@ -89,9 +76,9 @@ input[type="range"] {
     width: 50%;
 }
 
-.chatroom-color {
+/* .chatroom-color {
     background-color: #2F2D30;
-}
+} */
 .chatroom-border{
     border-style: solid;
     border-width: 10px;

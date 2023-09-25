@@ -10,6 +10,20 @@
   left: 50;
 }
 
+.imageZone {
+  position: fixed;
+  top: 0px;
+  left: 70px;
+  width: 100%;
+  max-width: 1080px;
+  background-color: rgb(47, 45, 48, 0.5);
+  padding: 20px;
+  border-left: 1px solid #5c0000;
+  height: 100vh;
+  overflow-y: auto;
+  z-index: 0;
+}
+
 .button-container {
   display: flex;
   align-items: center;
