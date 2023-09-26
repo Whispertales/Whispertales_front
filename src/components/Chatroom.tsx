@@ -50,9 +50,9 @@ export default function Chatroom(){
     };
 
     return (
-        <div className='chatroom-color'>
+        <div>
             <div className='chatroom'>
-                <ul>
+                <ul className='chatroomSpace'>
                     {messages.map((msg, i) => (
                         <li key={i} className={`message ${msg.isBot ? 'bot' : 'user'}`}>
                             <div>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { GetImageBase64, GetImagePrompt } from '../utils/tools/fetch';
+import Story from './Story';
 
 import '../styles/Image.css';
 import '../styles/Chatroom.css';
@@ -7,7 +8,9 @@ import '../styles/Chatroom.css';
 export default function Image({ inputValue, handleSubmit_Chatroom, handleInputChange_Chatroom, ClearButton }: any) {
     //const url = "http://163.13.201.153:7860/"; //http://163.13.201.153:7860/sdapi/v1/txt2img
 
-    const [imageSrc, setImageSrc] = useState<string>("https://memeprod.sgp1.digitaloceanspaces.com/user-wtf/1592956978473.jpg");
+    //https://memeprod.sgp1.digitaloceanspaces.com/user-wtf/1592956978473.jpg
+    //https://memeprod.sgp1.digitaloceanspaces.com/user-wtf/1633523164068.jpg
+    const [imageSrc, setImageSrc] = useState<string>("https://memeprod.sgp1.digitaloceanspaces.com/user-wtf/1633523164068.jpg");
     const [imageData, setImageData] = useState<string | null>(null);
     const [imagePrompt, setImagePrompt] = useState<string|null>("a Big Hotdog"); //初始imagepompt
 
@@ -40,9 +43,13 @@ export default function Image({ inputValue, handleSubmit_Chatroom, handleInputCh
         <div>
             {/* className='inputright' */}
             <form className='imageZone' onSubmit={handleSubmit_Chatroom}>
-                <img className='imagesize' src={imageSrc} alt="你生成出來的圖片" />
+                <div className='image-container'>
+                    <img src={imageSrc} alt="你生成出來的圖片" />
+                    {/* 想將這裡改成story標籤 */}
+                    <Story className='imageStoryFont'></Story>
+                </div>
                 <div className='button-container'>
-                    <input style={{ fontSize: `20px` }} type="text" value={inputValue} onChange={handleInputChange_Chatroom} />
+                    <input placeholder="有問題請問ai助手" style={{ fontSize: `20px` }} type="text" value={inputValue} onChange={handleInputChange_Chatroom} />
                     {/* Clear Button */}
                     <button onClick={ClearButton} >
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-trash3" viewBox="0 0 16 16">
