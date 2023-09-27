@@ -33,3 +33,20 @@ export async function GetImageBase64(imagepropmts: Object): Promise<any> {
         console.log(`GetImageBase64 try fail ${e}`)
     }
 }
+
+export async function GetStory(Storytail: Object): Promise<any> {
+    try {
+        const response = await fetch(apis.GetStory, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(Storytail)
+        });
+        const data = await response.json();
+        // console.log(`GetStory data: ${JSON.stringify(data) }`)
+        return data;
+    } catch (e) {
+        console.log(`GetStory try fail ${e}`)
+    }
+}

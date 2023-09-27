@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { GetImageBase64, GetImagePrompt } from '../utils/tools/fetch';
-import Story from './Story';
+import DropdownForm from './DropdownForm';
 
 import '../styles/Image.css';
 import '../styles/Chatroom.css';
+import './style.css';
 
 export default function Image({ inputValue, handleSubmit_Chatroom, handleInputChange_Chatroom, ClearButton }: any) {
     //const url = "http://163.13.201.153:7860/"; //http://163.13.201.153:7860/sdapi/v1/txt2img
@@ -13,6 +14,7 @@ export default function Image({ inputValue, handleSubmit_Chatroom, handleInputCh
     const [imageSrc, setImageSrc] = useState<string>("https://memeprod.sgp1.digitaloceanspaces.com/user-wtf/1633523164068.jpg");
     const [imageData, setImageData] = useState<string | null>(null);
     const [imagePrompt, setImagePrompt] = useState<string|null>("a Big Hotdog"); //初始imagepompt
+    const [dataFromChild, setDataFromChild] = useState('');
 
     const promptsJson = {
         prompt: inputValue, //使用者輸入的值
@@ -35,18 +37,26 @@ export default function Image({ inputValue, handleSubmit_Chatroom, handleInputCh
         //console.log(`inputValue = ${inputValue}`)
     }
 
+    const handleChildData = (data:any) => {
+        console.log(`aa = ${data}`)
+        setDataFromChild(data);
+    };
+
+
 
     useEffect(() => {
-    }, [imageData, imagePrompt]);
+    }, [imageData, imagePrompt, dataFromChild]);
 
     return (
         <div>
+            <div>
+                <DropdownForm onData={handleChildData}></DropdownForm> 
+            </div>
             {/* className='inputright' */}
             <form className='imageZone' onSubmit={handleSubmit_Chatroom}>
                 <div className='image-container'>
                     <img src={imageSrc} alt="你生成出來的圖片" />
-                    {/* 想將這裡改成story標籤 */}
-                    <Story className='imageStoryFont'></Story>
+                    <p>Data from child: {dataFromChild}</p>
                 </div>
                 <div className='button-container'>
                     <input placeholder="有問題請問ai助手" style={{ fontSize: `20px` }} type="text" value={inputValue} onChange={handleInputChange_Chatroom} />
