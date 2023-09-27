@@ -13,4 +13,4 @@
     npm install
 ### 3. 運行前端系統(主要是這邊跟舊的前端不同):
     npm run dev
-如果沒問題的話，即可在 http://localhost:707/stable_diffusion 中看到你所運行的網頁了(大概吧)，沒有的話請聯絡Coco
+如果沒問題的話，即可在 http://localhost:666/stable_diffusion 中看到你所運行的網頁了(大概吧)，沒有的話請聯絡Coco
