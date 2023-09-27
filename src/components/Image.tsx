@@ -42,8 +42,7 @@ export default function Image({ inputValue, handleSubmit_Chatroom, handleInputCh
         setDataFromChild(data);
     };
 
-
-
+    
     useEffect(() => {
     }, [imageData, imagePrompt, dataFromChild]);
 
