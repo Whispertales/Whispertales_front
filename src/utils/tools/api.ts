@@ -6,6 +6,7 @@ export const enum apis {
     SocketioServer = `http://localhost:2764`,
     GetImagePrompt = `http://localhost:7943/prompt`,
     GetStory = `http://localhost:7943/story`,
+    GetSleep = `http://localhost:7943/sleep`,
 
 
     // //use 192.168.1.26

@@ -50,3 +50,20 @@ export async function GetStory(Storytail: Object): Promise<any> {
         console.log(`GetStory try fail ${e}`)
     }
 }
+
+export async function GetSleep(theme: Object): Promise<any> {
+    try {
+        const response = await fetch(apis.GetStory, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(theme)
+        });
+        const data = await response.json();
+        console.log(`GetStory data: ${JSON.stringify(data) }`)
+        return data;
+    } catch (e) {
+        console.log(`GetSleep try fail ${e}`)
+    }
+}

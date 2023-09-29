@@ -37,10 +37,32 @@ export default function Image({ inputValue, handleSubmit_Chatroom, handleInputCh
         //console.log(`inputValue = ${inputValue}`)
     }
 
-    const handleChildData = (data:any) => {
+    const handleChildData = (data: any) => {
         console.log(`aa = ${data}`)
         setDataFromChild(data);
     };
+
+    function convertTextToHTML(text:string) {
+        const paragraphs = text.split('\n\n'); // 將文本分割為段落
+        const paragraphsHTML = paragraphs.map((paragraph, index) => (
+            <p key={index}>{paragraph}</p>
+        ));
+        return paragraphsHTML;
+    }
+
+    // 在React組件中使用轉換函數
+    function ShowStory() {
+        const text = dataFromChild;
+        const paragraphsHTML = convertTextToHTML(text);
+
+        return (
+            <div>
+                {paragraphsHTML}
+            </div>
+        );
+    }
+
+
 
     
     useEffect(() => {
@@ -55,7 +77,8 @@ export default function Image({ inputValue, handleSubmit_Chatroom, handleInputCh
             <form className='imageZone' onSubmit={handleSubmit_Chatroom}>
                 <div className='image-container'>
                     <img src={imageSrc} alt="你生成出來的圖片" />
-                    <p>Data from child: {dataFromChild}</p>
+                    {/* <p>Data from child: {dataFromChild}</p> */}
+                    <ShowStory></ShowStory>
                 </div>
                 <div className='button-container'>
                     <input placeholder="有問題請問ai助手" style={{ fontSize: `20px` }} type="text" value={inputValue} onChange={handleInputChange_Chatroom} />

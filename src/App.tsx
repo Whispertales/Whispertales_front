@@ -5,7 +5,7 @@ import Instruction from './view/Instruction';
 import UserSetting from './view/UserSetting';
 import Faq from './view/Faq';
 import AboutUs from './view/AboutUs';
-import Chatroom from './container/Socketio';
+import Sleep from './components/Sleep';
 
 function App() {
   return (
@@ -22,7 +22,8 @@ function App() {
           <Route path='faq' element={<Faq />}></Route>
           {/* {http://localhost:3000/about_us} */}
           <Route path='about_us' element={<AboutUs />}></Route>
-          <Route path='test_socket' element={<Chatroom />}></Route>
+          {/* {http://localhost:3000/sleep} */}
+          <Route path='sleep' element={<Sleep />}></Route>
         </Route>
       </Routes>
     </BrowserRouter>
