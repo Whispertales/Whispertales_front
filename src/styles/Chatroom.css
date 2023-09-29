@@ -1,0 +1,94 @@
+.chatright {
+    position: absolute;
+    top: 30px;
+    right: 380px;
+    font-size: 18px;
+}
+
+.imageleft {
+    position: absolute;
+    top: 8px;
+    left: 16px;
+    font-size: 18px;
+}
+
+.chatroom {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    width: 100%;
+    bottom: 0px;
+    max-width: 320px;
+    background-color: rgba(255, 203, 62, 0.5);
+    padding: 10px;
+    border-left: 1px solid #ccc;
+    z-index: 0;
+    border-left-style: solid;
+    border-left-width: 5px;
+    border-left-color: white;
+    overflow-y: auto;
+}
+
+.chatroomSpace {
+    overflow-y: auto;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    width: 100%;
+    bottom: 60px;
+    max-width: 320px;
+    padding:0px;
+    background-color: rgba(255, 36, 219, 0.5);
+}
+
+.chatroom ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+}
+
+
+.chatroom li {
+    position: relative;
+    padding: 5px;
+}
+
+.vertical-divider {
+    position: relative;
+    width: 1px;
+    height: 93%;
+    background-color: white;
+}
+
+.line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: white;
+    width: 0%;
+    transform: translateX(-90%);
+}
+
+.horizontal-divider {
+    position: relative;
+    height: 1px;
+    width: 93%;
+    background-color: white;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+input[type="range"] {
+    width: 50%;
+}
+
+.chatroom-border {
+    border-style: solid;
+    border-width: 10px;
+    border-color: red;
+}
