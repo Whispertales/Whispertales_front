@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { GetImageBase64, GetImagePrompt } from '../utils/tools/fetch';
 import DropdownForm from './DropdownForm';
+import ShowStory from './ShowStory';
 
 import '../styles/Image.css';
 import '../styles/Chatroom.css';
@@ -38,31 +39,9 @@ export default function Image({ inputValue, handleSubmit_Chatroom, handleInputCh
     }
 
     const handleChildData = (data: any) => {
-        console.log(`aa = ${data}`)
+        console.log(`ChildData = ${data}`)
         setDataFromChild(data);
     };
-
-    function convertTextToHTML(text:string) {
-        const paragraphs = text.split('\n\n'); // 將文本分割為段落
-        const paragraphsHTML = paragraphs.map((paragraph, index) => (
-            <p key={index}>{paragraph}</p>
-        ));
-        return paragraphsHTML;
-    }
-
-    // 在React組件中使用轉換函數
-    function ShowStory() {
-        const text = dataFromChild;
-        const paragraphsHTML = convertTextToHTML(text);
-
-        return (
-            <div>
-                {paragraphsHTML}
-            </div>
-        );
-    }
-
-
 
     
     useEffect(() => {
@@ -78,7 +57,7 @@ export default function Image({ inputValue, handleSubmit_Chatroom, handleInputCh
                 <div className='image-container'>
                     <img src={imageSrc} alt="你生成出來的圖片" />
                     {/* <p>Data from child: {dataFromChild}</p> */}
-                    <ShowStory></ShowStory>
+                    <ShowStory text={dataFromChild}></ShowStory>
                 </div>
                 <div className='button-container'>
                     <input placeholder="有問題請問ai助手" style={{ fontSize: `20px` }} type="text" value={inputValue} onChange={handleInputChange_Chatroom} />

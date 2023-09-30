@@ -20,7 +20,7 @@
 }
 
 .image-container {
-  text-align: center;
+  text-align: left;
   background-color: rgba(170, 78, 216, 0.4);
   /* 文字居中 */
   /* 增加上边距，根据需要调整值 */

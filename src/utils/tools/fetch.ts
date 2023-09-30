@@ -53,7 +53,7 @@ export async function GetStory(Storytail: Object): Promise<any> {
 
 export async function GetSleep(theme: Object): Promise<any> {
     try {
-        const response = await fetch(apis.GetStory, {
+        const response = await fetch(apis.GetSleep, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -61,7 +61,7 @@ export async function GetSleep(theme: Object): Promise<any> {
             body: JSON.stringify(theme)
         });
         const data = await response.json();
-        console.log(`GetStory data: ${JSON.stringify(data) }`)
+        console.log(`GetSleep data: ${JSON.stringify(data) }`)
         return data;
     } catch (e) {
         console.log(`GetSleep try fail ${e}`)
