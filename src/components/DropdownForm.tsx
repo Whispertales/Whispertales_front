@@ -29,6 +29,7 @@ export default function DropdownForm(props:any) {
 
    const handleSubmit = (event: any) => {
       event.preventDefault();
+      props.genImage();
       setVal({
          eduStageInfo: eduStage,
          eduClassInfo: eduClass,
