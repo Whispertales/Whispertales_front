@@ -7,6 +7,8 @@ import '../styles/Image.css';
 import '../styles/Chatroom.css';
 import './style.css';
 
+let aa:string=`在古老的數學王國，1是一位普通的國民，他一直夢想著改變這個世界。某天，1有了一種奇特的力量，那就是加法力量。他用這個力量可以把王國中的各種數字相加，吸引了大家的關注。\n\n1感受到這力量的強大，但也發現它有些單調。於是，他決定去探求更深入的數學知識。在深山中，1發現了另一種神秘力量，那就是乘法。他學會了用這種力量，將數字相乘，這引起了數學王國的轟動。\n\n但是，王國中的壞蛋，減法和除法，卻嫉妒着1的名氣。它們用各種困難阻撓1。於是，1又在難題中學習了減法和除法的知識，並且成功地將兩個壞蛋化解了。\n\n最後，1發現他要掌控所有的數學知識，必須通過一個難題，那就是排列組合。1想了很久，終於找到了答案。他成功地通過了試煉，成為了一位全能的數學大師，引領著數學王國不斷前進。`;
+
 export default function Image({ inputValue, handleSubmit_Chatroom, handleInputChange_Chatroom, ClearButton }: any) {
     //const url = "http://163.13.201.153:7860/"; //http://163.13.201.153:7860/sdapi/v1/txt2img
 
@@ -57,7 +59,8 @@ export default function Image({ inputValue, handleSubmit_Chatroom, handleInputCh
                 <div className='image-container'>
                     <img src={imageSrc} alt="你生成出來的圖片" />
                     {/* <p>Data from child: {dataFromChild}</p> */}
-                    <ShowStory text={dataFromChild}></ShowStory>
+                    {/* <ShowStory text={dataFromChild}></ShowStory> */}
+                    <ShowStory text={aa}></ShowStory>
                 </div>
                 <div className='button-container'>
                     <input placeholder="有問題請問ai助手" style={{ fontSize: `20px` }} type="text" value={inputValue} onChange={handleInputChange_Chatroom} />
