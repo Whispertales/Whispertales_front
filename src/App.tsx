@@ -7,23 +7,25 @@ import Faq from './view/Faq';
 import AboutUs from './view/AboutUs';
 import Sleep from './components/Sleep';
 
+import Demo0 from "./view/demo0";
+
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/">
-          {/* http://localhost:3000/stable_diffusion */}
+          {/* http://localhost:666/stable_diffusion */}
           <Route path='stable_diffusion' element={<SD />} />
-          {/* http://localhost:3000/instruction */}
+          {/* http://localhost:666/instruction */}
           <Route path='instruction' element={<Instruction />}></Route>
-          {/* {http://localhost:3000/user_setting} */}
+          {/* {http://localhost:666/user_setting} */}
           <Route path='user_setting' element={<UserSetting />}></Route>
-          {/* {http://localhost:3000/faq} */}
+          {/* {http://localhost:666/faq} */}
           <Route path='faq' element={<Faq />}></Route>
-          {/* {http://localhost:3000/about_us} */}
+          {/* {http://localhost:666/about_us} */}
           <Route path='about_us' element={<AboutUs />}></Route>
-          {/* {http://localhost:3000/sleep} */}
-          <Route path='sleep' element={<Sleep />}></Route>
+          {/* {http://localhost:666/demo} */}
+          <Route path='demo' element={<Demo0 />}></Route>
         </Route>
       </Routes>
     </BrowserRouter>
