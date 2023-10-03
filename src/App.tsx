@@ -7,7 +7,7 @@ import Faq from './view/Faq';
 import AboutUs from './view/AboutUs';
 import Sleep from './components/Sleep';
 
-import Demo0 from "./view/demo0";
+import Demo0 from "./view/Demo0";
 
 function App() {
   return (
