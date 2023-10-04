@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 
-import '../styles/Image.css';
-import '../styles/Chatroom.css';
-import '../components/style.css';
+//import '../styles/Image.css';
+//import '../styles/Chatroom.css';
+//import '../components/style.css';
+import '../com/style.css';
 
 let text: string = `艾米在奶奶家的閣樓找到一把古老的鑰匙。奶奶說：“這會帶你去一個神奇的地方。\n\n艾米決定探索，她跟著小光點進入森林。\n\n小兔子說：“你找到鑰匙了！我可以帶你去森林的秘密地方。”\n\n艾米用鑰匙打開了門，裡面充滿了彩色的霓虹光。\n\n小兔子說：“這是森林的舞會，每年只舉行一次！”\n\n動物們都很友善，艾米很快就學會了森林舞步。\n\n小兔子說：“快，我們得走了，舞會結束，森林的門即將關閉。”\n\n艾米感謝小兔子帶她參加這麼特別的舞會，然後她回到了家中。\n\n艾米知道，這片神奇的森林和她的奇妙冒險會是她永遠的秘密。\n\n艾米把鑰匙放回奶奶的閣樓，旁邊有一本古老的日記。`;
 
@@ -42,15 +43,16 @@ export default function Image({ inputValue, handleSubmit_Chatroom, handleInputCh
     };
 
     return (
-        <div>
+        <div  >
             {/* className='inputright' */}
-            <form className='imageZone' onSubmit={handleSubmit_Chatroom}>
-                <div className='image-container'>
-                    <img src={imageDemo[currentIndex]} alt={`Slider image ${currentIndex + 1}`} />
-                    <p>{paragraphs[currentIndex]}</p>
+            <form onSubmit={handleSubmit_Chatroom}>
+                <div className='imageleft '>
+                    <img className='image' src={imageDemo[currentIndex]} alt={`Slider image ${currentIndex + 1}`} />
+                    <br/>
+                    <span className='pcolor'>{paragraphs[currentIndex]}</span>
                     <br />
-                    <button onClick={handlePrevClick}>上一頁</button>
-                    <button onClick={handleNextClick}>下一頁</button>
+                    <button className='leftbutton' onClick={handlePrevClick}>上一頁</button>
+                    <button className='rightbutton' onClick={handleNextClick}>下一頁</button>
                     {/* <ShowStory text={text} imageDemo={imageDemo}></ShowStory> */}
                 </div>
                 <div className='button-container'>

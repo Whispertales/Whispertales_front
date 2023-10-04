@@ -5,6 +5,8 @@ import { GetStory } from "../utils/tools/fetch";
 import "../styles/Image.css";
 import "../styles/DropdownForm.css";
 
+import './styles.css';
+
 export default function DropdownForm(props:any) {
    const [eduStage, setEduStage] = useState("國小");
    const [eduClass, setEduClass] = useState("數學1");

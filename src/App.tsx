@@ -11,6 +11,7 @@ import Demo0 from "./view/Demo0";
 
 function App() {
   return (
+    <div>
     <BrowserRouter>
       <Routes>
         <Route path="/">
@@ -29,6 +30,7 @@ function App() {
         </Route>
       </Routes>
     </BrowserRouter>
+  </div>
   );
 }
 
