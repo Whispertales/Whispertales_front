@@ -1,14 +1,26 @@
 import { useLocation } from "react-router";
-import {useState, useEffect} from 'react';
+import { useEffect, useState } from 'react';
 
-import ShowImage from "./showImage";
+import { GetStoryData } from "../utils/tools/fetch";
+
 
 export default function Story(){
-   let location = useLocation();
-   console.log(location.state)
+   const [showStory, setShowStory] = useState("");
+
+   const getStoryData = async()=>{
+      let id = "653bc86d78626d0711bcd994"
+      let storyData = await GetStoryData(id)
+      setShowStory(storyData)
+      console.log(`storyData= ${JSON.stringify(storyData)}`);    
+   }
+
+   useEffect(() => {
+      getStoryData()
+   }, [showStory])
+
    return (
       <div>
-         <p>Hello World</p>
+         <p>{showStory != "" ? showStory : null }</p>
          <br />
       </div>
    );

@@ -7,6 +7,7 @@ export const enum apis {
     GetImagePrompt = `http://localhost:7943/prompt`,
     PostStory = `http://localhost:7943/story`,
     GetSleep = `http://localhost:7943/sleep`,
+    GetStoryFdb = `http://localhost:7943/getstoryfdb`,
 
 
     // //use 192.168.1.26
