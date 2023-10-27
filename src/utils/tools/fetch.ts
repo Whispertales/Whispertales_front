@@ -50,6 +50,25 @@ export async function GetStory(Storytail: Object): Promise<any> {
     }
 }
 
+//拿資料庫的故事(透過輸入唯一辨識)
+export async function GetStoryData(_id: string): Promise<any> {
+    const queryParams = new URLSearchParams();
+    queryParams.append("id", _id);
+    const url = `${apis.GetStoryFdb}?${queryParams.toString()}`;
+    try {
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+        const data = await response.json();
+        return data.storyTale; 
+    } catch (e) {
+        console.log(`GetStory try fail ${e}`)
+    }
+}
+
 
 export async function PostStory(Storytail: Object): Promise<any> {
     try {
@@ -60,8 +79,8 @@ export async function PostStory(Storytail: Object): Promise<any> {
             },
             body: JSON.stringify(Storytail)
         })
-        .then(() => console.log(`PostStory post success`))
-        .catch((e) => console.log(`PostStory post fail`))
+            .then(() => console.log(`PostStory post success`))
+            .catch((e) => console.log(`PostStory post fail: ${e}`))
     } catch (e) {
         console.log(`GetStory try fail ${e}`)
     }
