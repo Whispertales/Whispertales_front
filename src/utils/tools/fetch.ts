@@ -1,23 +1,27 @@
 import { apis } from "./api";
 
-
-export async function GetImagePrompt(userPrompt: Object): Promise<any> {
+//拿到英文的 生成圖片的prompt
+export async function GetImagePrompt(userPrompt: string): Promise<any> {
+    let playload:object={
+        prompt: userPrompt
+    }
     try {
         const response = await fetch(apis.GetImagePrompt, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(userPrompt)
+            body: JSON.stringify(playload)
         });
-        const val = await response.json();
-        return val;
+        const enPrompt = await response.json();
+        return enPrompt.imagePrompt;
     } catch (e) {
         console.log(`fetch GetImagePrompt fail: ${e}`)
     }
 }
 
 export async function GetImageBase64(imagepropmts: string): Promise<any> {
+    // console.log(`imagepropmts in GetImageBase64 is${imagepropmts}`)
     let playload = {
         imagepropmts: imagepropmts,
     }

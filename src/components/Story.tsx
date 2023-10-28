@@ -1,21 +1,27 @@
 import { useEffect, useState } from 'react';
 
-import { GetImageBase64, GetImage64Code } from '../utils/tools/fetch';
-import { GetStoryData } from "../utils/tools/fetch";
+import { GetImageBase64, GetStoryData, GetImagePrompt } from '../utils/tools/fetch';
+
 
 export default function Story() {
-   const [id, setId] = useState("653bfe7c9e5ec270480c9bff");
+   const [storyId, setStoryId] = useState("");
    const [showStory, setShowStory] = useState("");
    const [currentIndex, setCurrentIndex] = useState(0);
    const [paragraphs, setParagraphs] = useState([]);
    const [images, setImages] = useState<string[]>([]);
-   const [demo, setDemo] = useState("");
    const [demoLoaded, setDemoLoaded] = useState(false);
+   const [buttonIds] = useState<string[]>(["653d3ed6199db80b4f00b508", "653d3de2c3541979c6a2a777", "653d365e3b4860480fba145c"]);
 
    const getStoryData = async () => {
-      let storyData = await GetStoryData(id)
+      let storyData = await GetStoryData(storyId)
       setShowStory(storyData)
-      setParagraphs(storyData.split('\n\n'))
+      try {
+         setParagraphs(storyData.split('\n\n')) //有時候生成回來的故事不會有 \n\n 的部分，所以需要注意一下
+      } catch (e) {
+         {
+            console.log(`story gener form error , maybe the id error`);
+         }
+      }
    }
 
    const handleNextClick = () => {
@@ -29,13 +35,31 @@ export default function Story() {
       }
    };
 
+   function handle_ID_ButtonClick(id: string) {
+      setStoryId(id); // 将当前故事 ID 设置为所选按钮的 ID
+   }
+
    const testGetImage0 = async () => {
-      if (!demoLoaded && paragraphs.length > 0) {
+      if (storyId!="" && !demoLoaded && paragraphs.length > 0) {
          setDemoLoaded(true);
-         for (let i = 0; i < paragraphs.length; i++) { // 迭代所有段落
-            GetImageBase64(paragraphs[i]).then((data) => {
-               setImages((prevImages) => [...prevImages, `data:image/png;base64,${data}`]);
-            });
+         for (let i = 0; i < paragraphs.length; i++) {
+            //生成圖片(在那之前要先轉成英文)
+            try{
+               //生成英文prompt
+               GetImagePrompt(paragraphs[i]).then((enPrompt:string)=>{
+                  // console.log(`${i} 生成的英文圖片描述為: ${enPrompt}`)
+                  GetImageBase64(enPrompt).then((data:string) => {
+                     setImages((prevImages) => [...prevImages, `data:image/png;base64,${data}`]);
+                  }).catch((e)=>{
+                     console.log(`GetImageBase64 error: ${e}`);
+                  })
+               }).catch((e) => {
+                  console.log(`GetImagePrompt error: ${e}`);
+               })
+            }catch(e){
+               console.log(`try GetImagePrompt or GetImageBase64 fail`)
+            }
+            
          }
       }
    };
@@ -49,14 +73,23 @@ export default function Story() {
    useEffect(() => {
       getStoryData()
       setDemoLoaded(false);
-   }, [])
+   }, [storyId])
 
    return (
       <div>
+         <p>storyId = {storyId}</p>
+         {/** 重複狂按按鈕他會當爛 */}
          <div>
-            {/* <img src={demo} alt="測試圖片" /> */}
+            {buttonIds.map((id) => (
+               <button key={id} onClick={() => handle_ID_ButtonClick(id)}>
+                  Button {id}
+               </button>
+            ))}
+         </div>
+
+         <div>
+            <br />
             <img src={images[currentIndex]} alt={`第 ${currentIndex + 1} 張圖片`} />
-            {/* <img src={images[0]} alt={`第 ${1} 張圖片`} /> */}
             <br />
             <span>{paragraphs[currentIndex]}</span>
             <br />
