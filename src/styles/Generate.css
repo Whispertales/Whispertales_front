@@ -57,13 +57,6 @@
     left: 200px;
   }
 
-  .mark{
-    position: absolute; /* 使用绝对定位 */
-    top: ; /* 顶部对齐 */
-    left: 0; /* 左侧对齐 */
-    width: 100px; /* 图标的宽度 */
-    
-}
   .login-button{
     width: 52px;
     height: 40px;
