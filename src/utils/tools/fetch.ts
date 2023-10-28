@@ -18,13 +18,16 @@ export async function GetImagePrompt(userPrompt: Object): Promise<any> {
 }
 
 export async function GetImageBase64(imagepropmts: string): Promise<any> {
+    let playload = {
+        imagepropmts: imagepropmts,
+    }
     try {
         const response = await fetch(apis.ImageBase64Url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(imagepropmts)
+            body: JSON.stringify(playload)
         });
         const data = await response.json();
         // console.log(`GetImageBase64 data: ${data}`)

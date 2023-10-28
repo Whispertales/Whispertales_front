@@ -1,15 +1,16 @@
 import { useEffect, useState } from 'react';
 
-import { GetImage64Code } from '../utils/tools/fetch';
+import { GetImageBase64, GetImage64Code } from '../utils/tools/fetch';
 import { GetStoryData } from "../utils/tools/fetch";
 
 export default function Story() {
-   const [id, setId] = useState("653bc86d78626d0711bcd994");
+   const [id, setId] = useState("653bfe7c9e5ec270480c9bff");
    const [showStory, setShowStory] = useState("");
    const [currentIndex, setCurrentIndex] = useState(0);
    const [paragraphs, setParagraphs] = useState([]);
    const [images, setImages] = useState<string[]>([]);
-
+   const [demo, setDemo] = useState("");
+   const [demoLoaded, setDemoLoaded] = useState(false);
 
    const getStoryData = async () => {
       let storyData = await GetStoryData(id)
@@ -28,33 +29,34 @@ export default function Story() {
       }
    };
 
-   useEffect(()=>{
-      if(paragraphs.length > 0){
-         paragraphs.map(paragraph=>{GetImage64Code(id, paragraph)})
+   const testGetImage0 = async () => {
+      if (!demoLoaded && paragraphs.length > 0) {
+         setDemoLoaded(true);
+         for (let i = 0; i < paragraphs.length; i++) { // 迭代所有段落
+            GetImageBase64(paragraphs[i]).then((data) => {
+               setImages((prevImages) => [...prevImages, `data:image/png;base64,${data}`]);
+            });
+         }
       }
-   })
+   };
 
-   // useEffect(() => {
-   //    if (paragraphs.length > 0) {
-   //       const promises = paragraphs.map(paragraph => GetImage64Code(id, paragraph));
-   //       Promise.all(promises)
-   //          .then(values => {
-   //             const newImages = values.map(value => `${value}`);
-   //             setImages(prevImages => prevImages.concat(newImages));
-   //          })
-   //          .catch(e => console.log('Error:', e));
-   //    }
-   // }, [paragraphs]);
+
+
+   useEffect(() => {
+      testGetImage0();
+   }, [paragraphs]);
 
    useEffect(() => {
       getStoryData()
+      setDemoLoaded(false);
    }, [])
 
    return (
       <div>
-         {/* <p>{showStory != "" ? showStory : null }</p> */}
          <div>
-            <img src={images[currentIndex]} alt="你生成出來的圖片" />
+            {/* <img src={demo} alt="測試圖片" /> */}
+            <img src={images[currentIndex]} alt={`第 ${currentIndex + 1} 張圖片`} />
+            {/* <img src={images[0]} alt={`第 ${1} 張圖片`} /> */}
             <br />
             <span>{paragraphs[currentIndex]}</span>
             <br />
