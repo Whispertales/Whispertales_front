@@ -36,32 +36,26 @@ export default function Story() {
    };
 
    function handle_ID_ButtonClick(id: string) {
-      setStoryId(id); // 将当前故事 ID 设置为所选按钮的 ID
+      setStoryId(id);
+      setDemoLoaded(false); // 禁用所有其他按钮，直到新资源加载完成
    }
 
    const testGetImage0 = async () => {
-      if (storyId!="" && !demoLoaded && paragraphs.length > 0) {
-         setDemoLoaded(true);
-         for (let i = 0; i < paragraphs.length; i++) {
-            //生成圖片(在那之前要先轉成英文)
-            try{
-               //生成英文prompt
-               GetImagePrompt(paragraphs[i]).then((enPrompt:string)=>{
-                  // console.log(`${i} 生成的英文圖片描述為: ${enPrompt}`)
-                  GetImageBase64(enPrompt).then((data:string) => {
-                     setImages((prevImages) => [...prevImages, `data:image/png;base64,${data}`]);
-                  }).catch((e)=>{
-                     console.log(`GetImageBase64 error: ${e}`);
-                  })
-               }).catch((e) => {
-                  console.log(`GetImagePrompt error: ${e}`);
-               })
-            }catch(e){
-               console.log(`try GetImagePrompt or GetImageBase64 fail`)
-            }
-            
+      if (demoLoaded || paragraphs.length === 0) return; // 如果 demoLoaded 为 false 或 paragraphs 数组为空，则不执行任何操作
+
+      setDemoLoaded(false); // 禁用所有其他按钮，直到新资源加载完成
+
+      for (let i = 0; i < paragraphs.length; i++) {
+         try {
+            const enPrompt = await GetImagePrompt(paragraphs[i]);
+            const data = await GetImageBase64(enPrompt);
+            setImages((prevImages) => [...prevImages, `data:image/png;base64,${data}`]);
+         } catch (e) {
+            console.log(`get image error: ${e}`);
          }
       }
+
+      setDemoLoaded(true); // 启用所有按钮并标记资源已加载完毕
    };
 
 
