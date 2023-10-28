@@ -1,3 +1,4 @@
+
 .background-image {
     background-image: url('../Assets/背景.png');
     background-size: cover;
@@ -32,7 +33,11 @@
     outline: none;
     padding: 0;
   }
+  @font-face {
+    font-family: 'yellowtail'; /* 定义字体名称 */
+    src: url('src\Assets\Yellowtail-Regular.ttf') format('truetype'); /* 字体文件的路径和格式 */
 
+  }
   .text {
     display: flex;
     width: 376px;
@@ -42,7 +47,7 @@
     flex-shrink: 0;
     color: #5A6E79;
     text-align: center;
-    font-family: 'yellowtail', cursive; 
+    font-family: 'yellowtail', sans-serif; 
     font-size: 36px;
     font-style: normal;
     font-weight: 400;
@@ -52,6 +57,13 @@
     left: 200px;
   }
 
+  .mark{
+    position: absolute; /* 使用绝对定位 */
+    top: ; /* 顶部对齐 */
+    left: 0; /* 左侧对齐 */
+    width: 100px; /* 图标的宽度 */
+    
+}
   .login-button{
     width: 52px;
     height: 40px;
