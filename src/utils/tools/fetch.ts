@@ -17,7 +17,7 @@ export async function GetImagePrompt(userPrompt: Object): Promise<any> {
     }
 }
 
-export async function GetImageBase64(imagepropmts: Object): Promise<any> {
+export async function GetImageBase64(imagepropmts: string): Promise<any> {
     try {
         const response = await fetch(apis.ImageBase64Url, {
             method: 'POST',
@@ -27,12 +27,30 @@ export async function GetImageBase64(imagepropmts: Object): Promise<any> {
             body: JSON.stringify(imagepropmts)
         });
         const data = await response.json();
-        //console.log(`GetImageBase64 data: ${data}`)
+        // console.log(`GetImageBase64 data: ${data}`)
         return data;
     } catch (e) {
         console.log(`GetImageBase64 try fail ${e}`)
     }
 }
+
+//傳遞圖片prompt 值，post 回本機，透過id 存儲下來，再直接抓值就好
+export function GetImage64Code(id: string, imagepropmts: string): Promise<any> {
+    let playload = {
+        id: id,
+        imagepropmts: imagepropmts,
+    }
+    return fetch(apis.getimageprmopt, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(playload)
+    })
+        .then(() => console.log(`GetImage64Code post success`))
+        .catch(e => console.log(`GetImageBase64 try fail ${e}`));
+}
+
 
 export async function GetStory(Storytail: Object): Promise<any> {
     try {
