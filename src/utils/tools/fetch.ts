@@ -127,3 +127,38 @@ export async function GetSleep(theme: Object): Promise<any> {
         console.log(`GetSleep try fail ${e}`)
     }
 }
+
+
+//拿展示用的模擬書籍圖片
+export const getdemopic = async (story_id: string, picnum: number) => {
+    let url: string = `${apis.demobpic}?story_id=${story_id}&picnum=${picnum}`;
+    try {
+        // const response = await fetch(url, {
+        //     method: 'GET',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     }
+        // });
+        return url;
+    } catch (e) {
+        console.log(`getdemopic try fail ${e}`);
+        throw e;
+    }
+};
+
+export const getdvoices = async (story_id: string, picnum: number) => {
+    let url: string = `${apis.storyvoice}?story_id=${story_id}&picnum=${picnum}`;
+    try {
+        // const response = await fetch(url, {
+        //     method: 'GET',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     }
+        // });
+        return url;
+    } catch (e) {
+        console.log(`getdemopic try fail ${e}`);
+        throw e;
+    }
+};
+

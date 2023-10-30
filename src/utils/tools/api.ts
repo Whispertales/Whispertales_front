@@ -5,12 +5,14 @@ export const enum apis {
     ImageBase64Url = `http://localhost:7943/image`, //(post) to get image Base64 code
     SocketioServer = `http://localhost:2764`,
     GetImagePrompt = `http://localhost:7943/prompt`,
-    
+
     PostStory = `http://localhost:7943/story`,
     GetSleep = `http://localhost:7943/sleep`,
     
     GetStoryFdb = `http://localhost:7943/getstoryfdb`,
     getimageprmopt = `http://localhost:7943/postimageprompt`,
+    demobpic = `http://localhost:7943/demobpic`,
+    storyvoice = `http://localhost:7943/storyvoice`,
 
 
     // //use 192.168.1.26
