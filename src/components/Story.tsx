@@ -28,12 +28,12 @@ export default function Story() {
 
    const handleNextClick = () => {
       if (currentIndex < paragraphs.length - 1) {
-         setCurrentIndex(currentIndex + 1);
+         setCurrentIndex(currentIndex + 2);
       }
    };
    const handlePrevClick = () => {
       if (currentIndex > 0) {
-         setCurrentIndex(currentIndex - 1);
+         setCurrentIndex(currentIndex - 2);
       }
    };
 
@@ -66,10 +66,12 @@ export default function Story() {
    const demobooks3 = async () => {
       if (demoLoaded || paragraphs.length === 0) return;
       let loadedImages: string[] = [];
-      for (let i = 0; i < paragraphs.length; i++) {
+      for (let i = 0; i < paragraphs.length; i += 2) {
          try {
-            const urlpic = await getdemopic(storyId, i+1);
+            const urlpic = await getdemopic(storyId, i + 1);
             loadedImages.push(urlpic);
+            const urlpic2 = await getdemopic(storyId, i + 2);
+            loadedImages.push(urlpic2);
          } catch (error) {
             console.error(error);
          }
@@ -80,7 +82,7 @@ export default function Story() {
    const demovoices3 = async () => {
       if (demoLoaded || paragraphs.length === 0) return;
       let loadedVoices: string[] = [];
-      for (let i = 0; i < paragraphs.length; i++) {
+      for (let i = 0; i < paragraphs.length; i=i+1) {
          try {
             //<audio src="path/to/audio.mp3" controls></audio>
 
@@ -93,6 +95,57 @@ export default function Story() {
       setVoices(prevImages => [...prevImages, ...loadedVoices]);
    };
 
+   const showStoryLine = (currentIndex: any) => {
+      if (currentIndex>0) {
+         return (
+            <>
+               <span>{paragraphs[currentIndex-1]}</span>
+               <br />
+               <span>{paragraphs[currentIndex]}</span>
+            </>
+         );
+      } else {
+         return (
+            <>
+               <span>{paragraphs[currentIndex]}</span>
+            </>
+         );
+      }
+   }
+
+   const showpic = (currentIndex:any)=>{
+      if (currentIndex>0){
+         return (
+            <>
+               <img src={images[currentIndex-1]} alt={`第 ${currentIndex - 1} 張圖片`} />
+               <img src={images[currentIndex]} alt={`第 ${currentIndex} 張圖片`} />
+            </>
+         );
+      }else{
+         return(
+            <>
+               <img src={images[currentIndex]} alt={`第 ${currentIndex + 1} 張圖片`} />
+            </>
+         );
+      }
+   }
+
+   const showvoice= (currentIndex: any) => {
+      if (currentIndex>0) {
+         return (
+            <>
+               <audio src={voices[currentIndex - 1]} autoPlay={false} controls></audio>
+               <audio src={voices[currentIndex]} autoPlay={false} controls></audio>
+            </>
+         );
+      } else {
+         return (
+            <>
+               <audio src={voices[currentIndex]} autoPlay controls></audio>
+            </>
+         );
+      }
+   }
 
    useEffect(() => {
       // testGetImage0();
@@ -107,29 +160,26 @@ export default function Story() {
 
    return (
       <div>
-         {/** 重複狂按按鈕他會當爛 */}
          <div>
             {buttonIds.map((val) => (
                <button key={val.storyId} onClick={() => handle_ID_ButtonClick(val.storyId)}> {val.storyName} </button>
             ))}
          </div>
 
+         <div>    
+            {showpic(currentIndex)}
+            <br />
+            {showStoryLine(currentIndex)}
+            <br />
+         </div>
+         
          <div>
-            <br />
-            <img src={images[currentIndex]} alt={`第 ${currentIndex + 1} 張圖片`} />
-            <br />
-            {images[currentIndex]}
-            <br />
-            <span>{paragraphs[currentIndex]}</span>
-            <br />
+            {showvoice(currentIndex)}
+         </div>
+         <div>
             <button onClick={handlePrevClick}>上一頁</button>
             <button onClick={handleNextClick}>下一頁</button>
          </div>
-         <br />
-         <div>
-            <audio src={voices[currentIndex]} autoPlay controls></audio>
-         </div>
-         <br />
       </div>
    );
 }
