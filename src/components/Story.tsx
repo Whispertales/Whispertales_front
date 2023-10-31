@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { GetImageBase64, GetStoryData, GetImagePrompt, getdemopic, getdvoices } from '../utils/tools/fetch';
 import { books, booksShow } from '../utils/tools/books';
 
+import "../styles/Story.css";
 
 export default function Story() {
    const [storyId, setStoryId] = useState("");
@@ -82,7 +83,7 @@ export default function Story() {
    const demovoices3 = async () => {
       if (demoLoaded || paragraphs.length === 0) return;
       let loadedVoices: string[] = [];
-      for (let i = 0; i < paragraphs.length; i=i+1) {
+      for (let i = 0; i < paragraphs.length; i = i + 1) {
          try {
             //<audio src="path/to/audio.mp3" controls></audio>
 
@@ -95,34 +96,66 @@ export default function Story() {
       setVoices(prevImages => [...prevImages, ...loadedVoices]);
    };
 
-   const showStoryLine = (currentIndex: any) => {
-      if (currentIndex>0) {
+   // const showStoryLine = (currentIndex: any) => {
+   //    if (currentIndex > 0) {
+   //       return (
+   //          <>
+   //             <span>{paragraphs[currentIndex - 1]}</span>
+   //             <br />
+   //             <span>{paragraphs[currentIndex]}</span>
+   //          </>
+   //       );
+   //    } else {
+   //       return (
+   //          <>
+   //             <span>{paragraphs[currentIndex]}</span>
+   //          </>
+   //       );
+   //    }
+   // }
+
+   const showpic = (currentIndex: any) => {
+      if (currentIndex > 0) {
          return (
             <>
-               <span>{paragraphs[currentIndex-1]}</span>
-               <br />
-               <span>{paragraphs[currentIndex]}</span>
+               <div className="right-area">
+                  <div className="right-left">
+                     <div className="image-container">
+                        <img
+                           src={images[currentIndex - 1]}
+                           alt={`第 ${currentIndex - 1} 张图片`}
+                        />
+                     </div>
+                     <div className='text-container'>
+                        <span>{paragraphs[currentIndex - 1]}</span>
+                     </div>
+                     <div className="audio-container">
+                        <audio src={voices[currentIndex - 1]} autoPlay={false} controls></audio>
+                     </div>
+                  </div>
+
+
+                  <div className="right-right">
+                     <div className="image-container">
+                        <img
+                           src={images[currentIndex]}
+                           alt={`第 ${currentIndex} 张图片`}
+                        />
+                     </div>
+                     <div className='text-container'>
+                        <span>{paragraphs[currentIndex]}</span>
+                     </div>
+                     <div className="audio-container">
+                        <audio src={voices[currentIndex]} autoPlay={false} controls></audio>
+                     </div>
+                  </div>
+               </div>
+
+
             </>
          );
       } else {
          return (
-            <>
-               <span>{paragraphs[currentIndex]}</span>
-            </>
-         );
-      }
-   }
-
-   const showpic = (currentIndex:any)=>{
-      if (currentIndex>0){
-         return (
-            <>
-               <img src={images[currentIndex-1]} alt={`第 ${currentIndex - 1} 張圖片`} />
-               <img src={images[currentIndex]} alt={`第 ${currentIndex} 張圖片`} />
-            </>
-         );
-      }else{
-         return(
             <>
                <img src={images[currentIndex]} alt={`第 ${currentIndex + 1} 張圖片`} />
             </>
@@ -130,22 +163,22 @@ export default function Story() {
       }
    }
 
-   const showvoice= (currentIndex: any) => {
-      if (currentIndex>0) {
-         return (
-            <>
-               <audio src={voices[currentIndex - 1]} autoPlay={false} controls></audio>
-               <audio src={voices[currentIndex]} autoPlay={false} controls></audio>
-            </>
-         );
-      } else {
-         return (
-            <>
-               <audio src={voices[currentIndex]} autoPlay controls></audio>
-            </>
-         );
-      }
-   }
+   // const showvoice = (currentIndex: any) => {
+   //    if (currentIndex > 0) {
+   //       return (
+   //          <>
+   //             <audio src={voices[currentIndex - 1]} autoPlay={false} controls></audio>
+   //             <audio src={voices[currentIndex]} autoPlay={false} controls></audio>
+   //          </>
+   //       );
+   //    } else {
+   //       return (
+   //          <>
+   //             <audio src={voices[currentIndex]} autoPlay controls></audio>
+   //          </>
+   //       );
+   //    }
+   // }
 
    useEffect(() => {
       // testGetImage0();
@@ -160,26 +193,30 @@ export default function Story() {
 
    return (
       <div>
-         <div>
-            {buttonIds.map((val) => (
-               <button key={val.storyId} onClick={() => handle_ID_ButtonClick(val.storyId)}> {val.storyName} </button>
-            ))}
+
+         <div className="container">
+            <div className="left-area">
+               <div className="button-area">
+                  {buttonIds.map((val) => (
+                     <button key={val.storyId} onClick={() => handle_ID_ButtonClick(val.storyId)}>
+                        {val.storyName}
+                     </button>
+                  ))}
+               </div>
+            </div>
+            <div className="right-area">
+               <div>
+                  {showpic(currentIndex)}
+               </div>
+            </div>
+            <div>
+               {/* <div>
+                  <button onClick={handlePrevClick}>上一頁</button>
+                  <button onClick={handleNextClick}>下一頁</button>
+               </div> */}
+            </div>
          </div>
 
-         <div>    
-            {showpic(currentIndex)}
-            <br />
-            {showStoryLine(currentIndex)}
-            <br />
-         </div>
-         
-         <div>
-            {showvoice(currentIndex)}
-         </div>
-         <div>
-            <button onClick={handlePrevClick}>上一頁</button>
-            <button onClick={handleNextClick}>下一頁</button>
-         </div>
       </div>
    );
 }
