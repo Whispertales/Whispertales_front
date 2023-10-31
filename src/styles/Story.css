@@ -23,7 +23,6 @@ body {
 }
 
 .right-left {
-   /* background-color: aqua; */
    top: 0px;
    width: 50%;
    display: flex;

@@ -210,10 +210,10 @@ export default function Story() {
                </div>
             </div>
             <div>
-               {/* <div>
+               <div>
                   <button onClick={handlePrevClick}>上一頁</button>
                   <button onClick={handleNextClick}>下一頁</button>
-               </div> */}
+               </div>
             </div>
          </div>
 
