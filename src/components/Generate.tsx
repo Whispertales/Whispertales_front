@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect, Fragment} from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { PostStory } from '../utils/tools/fetch';
+import { GetImageBase64, GetImagePrompt, PostStory } from '../utils/tools/fetch';
 import '../styles/Generate.css';
 
 export default function Generate(){

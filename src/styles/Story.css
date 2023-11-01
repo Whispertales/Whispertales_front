@@ -5,9 +5,20 @@ body {
    height: 100%;
 }
 
-.container {
+/* .container {
    display: flex;
    height: 100%;
+} */
+
+.container {
+   /* border: 1px solid #ccc; */
+   padding: 10px;
+   max-width: 1020px;
+   margin: 20px auto;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
 }
 
 .left-area {
@@ -75,9 +86,9 @@ audio {
    width: 75%;
 }
 
-.text-container {
-   /* background-color: rgb(255, 255, 255); */
-   height: 50px;
+/* .text-container {
+   background-color: rgb(255, 255, 255);
+   height:70px;
    width: 500px;
    text-align: left;
    padding-top: 10px;
@@ -87,4 +98,4 @@ audio {
 
 .text-container span {
    display: block;
-}
+} */

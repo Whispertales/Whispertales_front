@@ -67,12 +67,10 @@ export default function Story() {
    const demobooks3 = async () => {
       if (demoLoaded || paragraphs.length === 0) return;
       let loadedImages: string[] = [];
-      for (let i = 0; i < paragraphs.length; i += 2) {
+      for (let i = 0; i < paragraphs.length; i += 1) {
          try {
             const urlpic = await getdemopic(storyId, i + 1);
             loadedImages.push(urlpic);
-            const urlpic2 = await getdemopic(storyId, i + 2);
-            loadedImages.push(urlpic2);
          } catch (error) {
             console.error(error);
          }
@@ -114,54 +112,56 @@ export default function Story() {
    //    }
    // }
 
-   const showpic = (currentIndex: any) => {
-      if (currentIndex > 0) {
-         return (
-            <>
-               <div className="right-area">
-                  <div className="right-left">
-                     <div className="image-container">
-                        <img
-                           src={images[currentIndex - 1]}
-                           alt={`第 ${currentIndex - 1} 张图片`}
-                        />
-                     </div>
-                     <div className='text-container'>
-                        <span>{paragraphs[currentIndex - 1]}</span>
-                     </div>
-                     <div className="audio-container">
-                        <audio src={voices[currentIndex - 1]} autoPlay={false} controls></audio>
-                     </div>
-                  </div>
+   // const showpic = (currentIndex: any) => {
+   //    if (currentIndex > 0) {
+   //       return (
+   //          <>
+   //             <img src={images[currentIndex]} alt={`這是第${currentIndex}張圖片`} />
+   //             <br />
+   //             <span>{paragraphs[currentIndex]}</span>
+   //             <audio src={voices[currentIndex]} autoPlay={false} controls></audio>
+   //             <div className="right-area">
+   //                <div className="right-left">
+   //                   <div className="image-container">
+   //                      <img
+   //                         src={images[currentIndex - 1]}
+   //                         alt={`第 ${currentIndex - 1} 张图片`}
+   //                      />
+   //                   </div>
+   //                   <div className='text-container'>
+   //                      <span>{paragraphs[currentIndex - 1]}</span>
+   //                   </div>
+   //                   <div className="audio-container">
+   //                      <audio src={voices[currentIndex - 1]} autoPlay={false} controls></audio>
+   //                   </div>
+   //                </div>
 
 
-                  <div className="right-right">
-                     <div className="image-container">
-                        <img
-                           src={images[currentIndex]}
-                           alt={`第 ${currentIndex} 张图片`}
-                        />
-                     </div>
-                     <div className='text-container'>
-                        <span>{paragraphs[currentIndex]}</span>
-                     </div>
-                     <div className="audio-container">
-                        <audio src={voices[currentIndex]} autoPlay={false} controls></audio>
-                     </div>
-                  </div>
-               </div>
-
-
-            </>
-         );
-      } else {
-         return (
-            <>
-               <img src={images[currentIndex]} alt={`第 ${currentIndex + 1} 張圖片`} />
-            </>
-         );
-      }
-   }
+   //                <div className="right-right">
+   //                   <div className="image-container">
+   //                      <img
+   //                         src={images[currentIndex]}
+   //                         alt={`第 ${currentIndex} 张图片`}
+   //                      />
+   //                   </div>
+   //                   <div className='text-container'>
+   //                      <span>{paragraphs[currentIndex]}</span>
+   //                   </div>
+   //                   <div className="audio-container">
+   //                      <audio src={voices[currentIndex]} autoPlay={false} controls></audio>
+   //                   </div>
+   //                </div>
+   //             </div>
+   //          </>
+   //       );
+   //    } else {
+   //       return (
+   //          <>
+   //             <img src={images[currentIndex]} alt={`第 ${currentIndex + 1} 張圖片`} />
+   //          </>
+   //       );
+   //    }
+   // }
 
    // const showvoice = (currentIndex: any) => {
    //    if (currentIndex > 0) {
@@ -179,6 +179,27 @@ export default function Story() {
    //       );
    //    }
    // }
+
+
+   const demoShowpic = () => {
+      let aa = [];
+
+      for (let i = 0; i < paragraphs.length; i++) {
+         aa.push(
+            <div key={i} className='container'>
+               <img src={images[i]} alt={`這是第${i}張圖片`} style={{width:'1000px'}}/>
+               <br />
+               <div>{paragraphs[i]}</div>
+               <br />
+               <audio src={voices[i]} autoPlay={false} controls></audio>
+            </div>
+         );
+      }
+
+      return aa;
+   }
+
+
 
    useEffect(() => {
       // testGetImage0();
@@ -206,14 +227,15 @@ export default function Story() {
             </div>
             <div className="right-area">
                <div>
-                  {showpic(currentIndex)}
+                  {/* {showpic(currentIndex)} */}
+                  {demoShowpic()}
                </div>
             </div>
             <div>
-               <div>
+               {/* <div>
                   <button onClick={handlePrevClick}>上一頁</button>
                   <button onClick={handleNextClick}>下一頁</button>
-               </div>
+               </div> */}
             </div>
          </div>
 
