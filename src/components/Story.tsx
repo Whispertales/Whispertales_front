@@ -29,12 +29,12 @@ export default function Story() {
 
    const handleNextClick = () => {
       if (currentIndex < paragraphs.length - 1) {
-         setCurrentIndex(currentIndex + 2);
+         setCurrentIndex(currentIndex + 1);
       }
    };
    const handlePrevClick = () => {
       if (currentIndex > 0) {
-         setCurrentIndex(currentIndex - 2);
+         setCurrentIndex(currentIndex - 1);
       }
    };
 
@@ -42,6 +42,27 @@ export default function Story() {
       setStoryId(id);
       setDemoLoaded(false); // 禁用所有其他按钮，直到新资源加载完成
    }
+
+   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+      if (event.key === "ArrowLeft") {
+         // Show previous book
+         const prevIndex = buttonIds.findIndex((val) => val.storyId === storyId) - 1;
+         if (prevIndex >= 0) {
+            setStoryId(buttonIds[prevIndex].storyId);
+            setDemoLoaded(false);
+            setCurrentIndex(0);
+         }
+      } else if (event.key === "ArrowRight") {
+         // Show next book
+         const nextIndex = buttonIds.findIndex((val) => val.storyId === storyId) + 1;
+         if (nextIndex < buttonIds.length) {
+            setStoryId(buttonIds[nextIndex].storyId);
+            setDemoLoaded(false);
+            setCurrentIndex(0);
+         }
+      }
+   };
+
 
    // 正式使用，調用gpt生成圖片
    // const testGetImage0 = async () => {
@@ -84,7 +105,6 @@ export default function Story() {
       for (let i = 0; i < paragraphs.length; i = i + 1) {
          try {
             //<audio src="path/to/audio.mp3" controls></audio>
-
             const urlpic = await getdvoices(storyId, i + 1);
             loadedVoices.push(`${urlpic}`);
          } catch (error) {
@@ -187,7 +207,7 @@ export default function Story() {
       for (let i = 0; i < paragraphs.length; i++) {
          aa.push(
             <div key={i} className='container'>
-               <img src={images[i]} alt={`這是第${i}張圖片`} style={{width:'1000px'}}/>
+               <img src={images[i]} alt={`這是第${i}張圖片`} style={{ width: '1000px' }} />
                <br />
                <div>{paragraphs[i]}</div>
                <br />
@@ -201,16 +221,41 @@ export default function Story() {
 
 
 
+   // useEffect(() => {
+   //    // testGetImage0();
+   //    demobooks3();
+   //    demovoices3();
+   // }, [paragraphs]);
+
+   // useEffect(() => {
+   //    getStoryData();
+   //    demobooks3();
+   //    demovoices3();
+   //    setDemoLoaded(false);
+   // }, [storyId])
+
    useEffect(() => {
-      // testGetImage0();
+      // Clear images and voices state
+      setImages([]);
+      setVoices([]);
+
+      // Load new images and voices data
       demobooks3();
       demovoices3();
    }, [paragraphs]);
 
    useEffect(() => {
-      getStoryData()
+      // Clear images and voices state
+      setImages([]);
+      setVoices([]);
+
+      // Load new story data and images/voices data
+      getStoryData();
+      demobooks3();
+      demovoices3();
       setDemoLoaded(false);
-   }, [storyId])
+   }, [storyId]);
+
 
    return (
       <div>
