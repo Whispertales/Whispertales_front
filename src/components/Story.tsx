@@ -14,6 +14,7 @@ export default function Story() {
    const [voices, setVoices] = useState<string[]>([]);
    const [demoLoaded, setDemoLoaded] = useState(false);
    const [buttonIds] = useState<books[]>(booksShow);
+   const [currentBookIndex, setCurrentBookIndex] = useState(0);
 
    const getStoryData = async () => {
       let storyData = await GetStoryData(storyId)
@@ -27,42 +28,43 @@ export default function Story() {
       }
    }
 
-   const handleNextClick = () => {
-      if (currentIndex < paragraphs.length - 1) {
-         setCurrentIndex(currentIndex + 1);
-      }
-   };
-   const handlePrevClick = () => {
-      if (currentIndex > 0) {
-         setCurrentIndex(currentIndex - 1);
-      }
-   };
+   // console.log(`buttonIds.length = ${buttonIds.length}`);
+   // const handleNextClick = () => {
+   //    if (currentIndex < buttonIds.length - 1) {
+   //       setCurrentIndex(currentIndex + 1);
+   //    }
+   // };
+   // const handlePrevClick = () => {
+   //    if (currentIndex > 0) {
+   //       setCurrentIndex(currentIndex - 1);
+   //    }
+   // };
 
-   function handle_ID_ButtonClick(id: string) {
-      setStoryId(id);
-      setDemoLoaded(false); // 禁用所有其他按钮，直到新资源加载完成
+   // function handle_ID_ButtonClick(id: string) {
+   //    setStoryId(id);
+   //    setDemoLoaded(false); // 禁用所有其他按钮，直到新资源加载完成
+   // }
+
+   function goToBook(index: number) {
+      if (index >= 0 && index < buttonIds.length) {
+         setStoryId(buttonIds[index].storyId);
+         setCurrentBookIndex(index);
+         setDemoLoaded(false); // 禁用所有其他按钮，直到新资源加载完成
+      }
    }
 
-   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
-      if (event.key === "ArrowLeft") {
-         // Show previous book
-         const prevIndex = buttonIds.findIndex((val) => val.storyId === storyId) - 1;
-         if (prevIndex >= 0) {
-            setStoryId(buttonIds[prevIndex].storyId);
-            setDemoLoaded(false);
-            setCurrentIndex(0);
-         }
-      } else if (event.key === "ArrowRight") {
-         // Show next book
-         const nextIndex = buttonIds.findIndex((val) => val.storyId === storyId) + 1;
-         if (nextIndex < buttonIds.length) {
-            setStoryId(buttonIds[nextIndex].storyId);
-            setDemoLoaded(false);
-            setCurrentIndex(0);
-         }
+
+   const handleLeftClick = () => {
+      if (currentBookIndex > 0) {
+         setCurrentBookIndex(currentBookIndex - 1);
       }
    };
 
+   const handleRightClick = () => {
+      if (currentBookIndex < buttonIds.length - 1) {
+         setCurrentBookIndex(currentBookIndex + 1);
+      }
+   };
 
    // 正式使用，調用gpt生成圖片
    // const testGetImage0 = async () => {
@@ -209,7 +211,7 @@ export default function Story() {
             <div key={i} className='container'>
                <img src={images[i]} alt={`這是第${i}張圖片`} style={{ width: '1000px' }} />
                <br />
-               <div>{paragraphs[i]}</div>
+               <div style={{ fontSize: '20px', fontFamily: 'Microsoft JhengHei' }}>{paragraphs[i]}</div>
                <br />
                <audio src={voices[i]} autoPlay={false} controls></audio>
             </div>
@@ -259,31 +261,31 @@ export default function Story() {
 
    return (
       <div>
-
          <div className="container">
             <div className="left-area">
                <div className="button-area">
-                  {buttonIds.map((val) => (
-                     <button key={val.storyId} onClick={() => handle_ID_ButtonClick(val.storyId)}>
+                  {/* {buttonIds.map((val, index) => (
+                     <button
+                        key={val.storyId}
+                        onClick={() => handle_ID_ButtonClick(val.storyId)}
+                        disabled={currentBookIndex === index}
+                     >
                         {val.storyName}
                      </button>
-                  ))}
+                  ))} */}
+               </div>
+               <div className="arrow-buttons">
+                  <button onClick={() => goToBook(currentBookIndex - 1)}>{'<'}</button>
+                  <button onClick={() => goToBook(currentBookIndex + 1)}>{'>'}</button>
                </div>
             </div>
             <div className="right-area">
-               <div>
-                  {/* {showpic(currentIndex)} */}
-                  {demoShowpic()}
-               </div>
-            </div>
-            <div>
-               {/* <div>
-                  <button onClick={handlePrevClick}>上一頁</button>
-                  <button onClick={handleNextClick}>下一頁</button>
-               </div> */}
+               <div>{demoShowpic()}</div>
             </div>
          </div>
-
       </div>
    );
+
+
+
 }

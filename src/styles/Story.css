@@ -1,9 +1,9 @@
-html,
+/* html,
 body {
    margin: 0;
    padding: 0;
    height: 100%;
-}
+} */
 
 /* .container {
    display: flex;
@@ -99,3 +99,30 @@ audio {
 .text-container span {
    display: block;
 } */
+
+
+.arrow-container {
+   position: fixed;
+   /* 使用固定定位，使其不會隨著頁面滾動而移動 */
+   left: 16px;
+   /* 將容器向左偏移 16 像素 */
+   bottom: 16px;
+   /* 將容器向下偏移 16 像素 */
+   display: flex;
+   /* 使用彈性布局以便讓箭頭按鈕水平排列 */
+   justify-content: space-between;
+   /* 將彈性容器中的子元素分開排列 */
+   align-items: center;
+   /* 將子元素垂直居中 */
+   width: 10%;
+   /* 修改箭頭按鈕容器的寬度 */
+   padding: 16px;
+   /* 添加一些填充以增加可點擊區域 */
+   z-index: 1;
+   /* 確保箭頭按鈕位於所有其他元素之上 */
+}
+
+.arrow-container button {
+   font-size: 24px;
+   padding: 8px;
+}
