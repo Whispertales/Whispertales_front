@@ -263,8 +263,8 @@ export default function Story() {
       <div>
          <div className="container">
             <div className="left-area">
-               <div className="button-area">
-                  {/* {buttonIds.map((val, index) => (
+               {/* <div className="button-area">
+                  {buttonIds.map((val, index) => (
                      <button
                         key={val.storyId}
                         onClick={() => handle_ID_ButtonClick(val.storyId)}
@@ -272,11 +272,14 @@ export default function Story() {
                      >
                         {val.storyName}
                      </button>
-                  ))} */}
+                  ))}
+               </div> */}
+               <div className="arrow-container-left">
+                  <button onClick={() => goToBook(currentBookIndex - 1)}>上一本故事</button>
+                  {/* <button onClick={() => goToBook(currentBookIndex + 1)}> ^ↀᴥↀ^  下一頁</button> */}
                </div>
-               <div className="arrow-buttons">
-                  <button onClick={() => goToBook(currentBookIndex - 1)}>{'<'}</button>
-                  <button onClick={() => goToBook(currentBookIndex + 1)}>{'>'}</button>
+               <div className="arrow-container-right">
+                  <button onClick={() => goToBook(currentBookIndex + 1)}>下一本故事</button>
                </div>
             </div>
             <div className="right-area">

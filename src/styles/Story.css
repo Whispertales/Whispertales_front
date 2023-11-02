@@ -26,30 +26,30 @@ body {
    padding: 5px;
 }
 
-.right-area {
+/* .right-area {
    display: flex;
    align-items: center;
    justify-content: space-between;
    width: 100%;
-}
+} */
 
-.right-left {
+/* .right-left {
    top: 0px;
    width: 50%;
    display: flex;
    flex-direction: column;
    align-items: center;
    padding-right: 3px;
-}
+} */
 
-.right-right {
+/* .right-right {
    top: 0px;
    width: 50%;
    display: flex;
    flex-direction: column;
    align-items: center;
    padding-left: 3px;
-}
+} */
 
 .image-container {
    background-color: white;
@@ -101,28 +101,32 @@ audio {
 } */
 
 
-.arrow-container {
+.arrow-container-left {
    position: fixed;
-   /* 使用固定定位，使其不會隨著頁面滾動而移動 */
-   left: 16px;
-   /* 將容器向左偏移 16 像素 */
-   bottom: 16px;
-   /* 將容器向下偏移 16 像素 */
+   left: 13px;
+   bottom: 13px;
    display: flex;
-   /* 使用彈性布局以便讓箭頭按鈕水平排列 */
    justify-content: space-between;
-   /* 將彈性容器中的子元素分開排列 */
    align-items: center;
-   /* 將子元素垂直居中 */
-   width: 10%;
-   /* 修改箭頭按鈕容器的寬度 */
-   padding: 16px;
-   /* 添加一些填充以增加可點擊區域 */
-   z-index: 1;
-   /* 確保箭頭按鈕位於所有其他元素之上 */
+   padding: 4px;
 }
 
-.arrow-container button {
-   font-size: 24px;
-   padding: 8px;
+.arrow-container-left button {
+   font-size: 20px;
+   padding: 4px;
+}
+
+.arrow-container-right {
+   position: fixed;
+   right: 13px;
+   bottom: 13px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 4px;
+}
+
+.arrow-container-right button {
+   font-size: 20px;
+   padding: 4px;
 }
