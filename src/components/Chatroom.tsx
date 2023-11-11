@@ -4,8 +4,6 @@ import { apis } from '../utils/tools/api';
 
 import '../styles/Chatroom.css';
 
-import Image from './Image';
-
 export default function Chatroom(){
     const ENDPOINT = apis.SocketioServer; // replace with your server endpoint
     const socketRef = useRef<Socket>();
@@ -61,9 +59,6 @@ export default function Chatroom(){
                         </li>
                     ))}
                 </ul>
-            </div>
-            <div>
-                <Image className='imageleft' inputValue={inputValue} handleSubmit_Chatroom={handleSubmit_Chatroom} handleInputChange_Chatroom={handleInputChange_Chatroom} ClearButton={handleClearButton}></Image>
             </div>
         </div>
 

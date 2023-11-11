@@ -20,6 +20,7 @@ export async function GetImagePrompt(userPrompt: string): Promise<any> {
     }
 }
 
+//拿圖片 base64 code (目前不確定要不要，如果今天是從本地端拿圖片的話這個就不需要了)
 export async function GetImageBase64(imagepropmts: string): Promise<any> {
     // console.log(`imagepropmts in GetImageBase64 is${imagepropmts}`)
     let playload = {
@@ -94,7 +95,7 @@ export async function GetStoryData(_id: string): Promise<any> {
     }
 }
 
-
+//把想生成的故事訊息傳到後端(留)
 export async function PostStory(Storytail: Object): Promise<any> {
     try {
         fetch(apis.PostStory, {
@@ -108,23 +109,6 @@ export async function PostStory(Storytail: Object): Promise<any> {
             .catch((e) => console.log(`PostStory post fail: ${e}`))
     } catch (e) {
         console.log(`GetStory try fail ${e}`)
-    }
-}
-
-export async function GetSleep(theme: Object): Promise<any> {
-    try {
-        const response = await fetch(apis.GetSleep, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(theme)
-        });
-        const data = await response.json();
-        console.log(`GetSleep data: ${JSON.stringify(data)}`)
-        return data;
-    } catch (e) {
-        console.log(`GetSleep try fail ${e}`)
     }
 }
 

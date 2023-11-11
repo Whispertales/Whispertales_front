@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { GetImageBase64, GetStoryData, GetImagePrompt, getdemopic, getdvoices } from '../utils/tools/fetch';
+import {  GetStoryData, getdemopic, getdvoices } from '../utils/tools/fetch';
 import { books, booksShow } from '../utils/tools/books';
 
 import "../styles/Story.css";

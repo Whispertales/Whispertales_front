@@ -1,15 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import SD from './view/SD';
 import Instruction from './view/Instruction';
 import UserSetting from './view/UserSetting';
 import Faq from './view/Faq';
 import AboutUs from './view/AboutUs';
-import Sleep from './components/Sleep';
 import Story from './components/Story';
 import Generate from './components/Generate';
-
-import Demo0 from "./view/Demo0";
 
 function App() {
   return (
@@ -24,8 +20,6 @@ function App() {
           </Route>
 
           <Route path="/">
-            {/* http://localhost:666/stable_diffusion */}
-            <Route path='stable_diffusion' element={<SD />} />
             {/* http://localhost:666/instruction */}
             <Route path='instruction' element={<Instruction />}></Route>
             {/* {http://localhost:666/user_setting} */}
@@ -34,10 +28,6 @@ function App() {
             <Route path='faq' element={<Faq />}></Route>
             {/* {http://localhost:666/about_us} */}
             <Route path='about_us' element={<AboutUs />}></Route>
-            {/* {http://localhost:666/demo} */}
-            <Route path='demo' element={< Demo0 />}></Route>
-            { /*http://localhost:666/story */}
-            < Route path='story' element={<Story />}></Route>
           </Route>
 
         </Routes>

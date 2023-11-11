@@ -1,4 +1,4 @@
-import { useState, useEffect, Fragment} from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { GetImageBase64, GetImagePrompt, PostStory } from '../utils/tools/fetch';
