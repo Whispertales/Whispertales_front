@@ -13,6 +13,7 @@ export const enum apis {
     getimageprmopt = `http://localhost:7943/postimageprompt`,
     demobpic = `http://localhost:7943/demobpic`,
     storyvoice = `http://localhost:7943/storyvoice`,
+    NewestStoryId = `http://localhost:7943/story/newstoryid`,
 
 
     // //use 192.168.1.26

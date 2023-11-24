@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import {  GetStoryData, getdemopic, getdvoices } from '../utils/tools/fetch';
-import { books, booksShow } from '../utils/tools/books';
+import { books, Allbooks, booksShow } from '../utils/tools/books';
 
 import "../styles/Story.css";
 
@@ -27,23 +27,6 @@ export default function Story() {
          }
       }
    }
-
-   // console.log(`buttonIds.length = ${buttonIds.length}`);
-   // const handleNextClick = () => {
-   //    if (currentIndex < buttonIds.length - 1) {
-   //       setCurrentIndex(currentIndex + 1);
-   //    }
-   // };
-   // const handlePrevClick = () => {
-   //    if (currentIndex > 0) {
-   //       setCurrentIndex(currentIndex - 1);
-   //    }
-   // };
-
-   // function handle_ID_ButtonClick(id: string) {
-   //    setStoryId(id);
-   //    setDemoLoaded(false); // 禁用所有其他按钮，直到新资源加载完成
-   // }
 
    function goToBook(index: number) {
       if (index >= 0 && index < buttonIds.length) {
@@ -116,92 +99,6 @@ export default function Story() {
       setVoices(prevImages => [...prevImages, ...loadedVoices]);
    };
 
-   // const showStoryLine = (currentIndex: any) => {
-   //    if (currentIndex > 0) {
-   //       return (
-   //          <>
-   //             <span>{paragraphs[currentIndex - 1]}</span>
-   //             <br />
-   //             <span>{paragraphs[currentIndex]}</span>
-   //          </>
-   //       );
-   //    } else {
-   //       return (
-   //          <>
-   //             <span>{paragraphs[currentIndex]}</span>
-   //          </>
-   //       );
-   //    }
-   // }
-
-   // const showpic = (currentIndex: any) => {
-   //    if (currentIndex > 0) {
-   //       return (
-   //          <>
-   //             <img src={images[currentIndex]} alt={`這是第${currentIndex}張圖片`} />
-   //             <br />
-   //             <span>{paragraphs[currentIndex]}</span>
-   //             <audio src={voices[currentIndex]} autoPlay={false} controls></audio>
-   //             <div className="right-area">
-   //                <div className="right-left">
-   //                   <div className="image-container">
-   //                      <img
-   //                         src={images[currentIndex - 1]}
-   //                         alt={`第 ${currentIndex - 1} 张图片`}
-   //                      />
-   //                   </div>
-   //                   <div className='text-container'>
-   //                      <span>{paragraphs[currentIndex - 1]}</span>
-   //                   </div>
-   //                   <div className="audio-container">
-   //                      <audio src={voices[currentIndex - 1]} autoPlay={false} controls></audio>
-   //                   </div>
-   //                </div>
-
-
-   //                <div className="right-right">
-   //                   <div className="image-container">
-   //                      <img
-   //                         src={images[currentIndex]}
-   //                         alt={`第 ${currentIndex} 张图片`}
-   //                      />
-   //                   </div>
-   //                   <div className='text-container'>
-   //                      <span>{paragraphs[currentIndex]}</span>
-   //                   </div>
-   //                   <div className="audio-container">
-   //                      <audio src={voices[currentIndex]} autoPlay={false} controls></audio>
-   //                   </div>
-   //                </div>
-   //             </div>
-   //          </>
-   //       );
-   //    } else {
-   //       return (
-   //          <>
-   //             <img src={images[currentIndex]} alt={`第 ${currentIndex + 1} 張圖片`} />
-   //          </>
-   //       );
-   //    }
-   // }
-
-   // const showvoice = (currentIndex: any) => {
-   //    if (currentIndex > 0) {
-   //       return (
-   //          <>
-   //             <audio src={voices[currentIndex - 1]} autoPlay={false} controls></audio>
-   //             <audio src={voices[currentIndex]} autoPlay={false} controls></audio>
-   //          </>
-   //       );
-   //    } else {
-   //       return (
-   //          <>
-   //             <audio src={voices[currentIndex]} autoPlay controls></audio>
-   //          </>
-   //       );
-   //    }
-   // }
-
 
    const demoShowpic = () => {
       let aa = [];
@@ -220,21 +117,6 @@ export default function Story() {
 
       return aa;
    }
-
-
-
-   // useEffect(() => {
-   //    // testGetImage0();
-   //    demobooks3();
-   //    demovoices3();
-   // }, [paragraphs]);
-
-   // useEffect(() => {
-   //    getStoryData();
-   //    demobooks3();
-   //    demovoices3();
-   //    setDemoLoaded(false);
-   // }, [storyId])
 
    useEffect(() => {
       // Clear images and voices state

@@ -13,3 +13,7 @@ export let booksShow: books[] = [
       storyName: "公主大變身"
    },
 ];
+
+export const Allbooks = () =>{
+
+}
