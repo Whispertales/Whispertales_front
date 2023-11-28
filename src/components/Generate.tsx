@@ -26,6 +26,7 @@ export default function Generate(){
    return (
       <>
         <div className="background-image">
+            <div className="overlay">
             <div className="top-bar">
                <button className="button">
                   <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
@@ -75,12 +76,13 @@ export default function Generate(){
                      onChange={handleChange}
                      style={{
                         display: 'inline-flex',
-                        padding: '9px 30px 9px 40px',
+                        padding: '9px 150px 9px 40px',
                         justifyContent: 'center',
                         alignItems: 'center',
                         gap: '481px',
                         borderRadius: '50px',
-                        background: '#C5D1D382.51%'
+                        background: '#C5D1D382.51%',
+                        borderColor:'white'
                      }}
                   />
 
@@ -101,12 +103,14 @@ export default function Generate(){
                      alignItems: 'center',
                      gap: '481px',
                      borderRadius: '50px',
-                     background: '#C5D1D382.51%'
+                     background: '#C5D1D382.51%',
+                     borderColor:'white'
                   }}
                   > 生成
                   </button>
                </div>
             </form>
+            </div>
         </div>
       </>
    );

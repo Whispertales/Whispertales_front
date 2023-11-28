@@ -9,9 +9,21 @@ body {
    display: flex;
    height: 100%;
 } */
-
+.background{
+   background-image: url('../Assets/170108.jpg');
+   background-size: cover;
+   background-position: center center;
+   background-attachment: fixed;
+   width: 100%;
+   height: 100vh;
+   position: fixed;
+   top: 0;
+   left: 0;
+   z-index: -1; 
+}
 .container {
    /* border: 1px solid #ccc; */
+
    padding: 10px;
    max-width: 1020px;
    margin: 20px auto;
@@ -129,4 +141,31 @@ audio {
 .arrow-container-right button {
    font-size: 20px;
    padding: 4px;
+}
+
+.leftbutton-style{
+   background-color: #52858c;
+   border-radius: 20px;
+   color: white;
+   border-color:white;
+   width: 200px; /* 設置按鈕的寬度 */
+   padding: 10px; /* 可以根據需要調整內邊距 */
+   text-align: center;
+   /*padding-right:100px;
+   padding-left: 100px;
+   margin: 0 10px;
+   width: 200px;*/
+}
+.rightbutton-style{
+   background-color: #E7775D;
+   border-radius: 20px;
+   color: white;
+   border-color:white;
+   width: 200px; /* 設置按鈕的寬度 */
+   padding: 10px; /* 可以根據需要調整內邊距 */
+   text-align: center;
+   /*padding-right:100px;
+   padding-left: 100px;
+   margin: 0 10px;
+   width: 200px;*/
 }

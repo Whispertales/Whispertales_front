@@ -142,7 +142,7 @@ export default function Story() {
 
 
    return (
-      <div>
+      <div className="background">
          <div className="container">
             <div className="left-area">
                {/* <div className="button-area">
@@ -157,11 +157,11 @@ export default function Story() {
                   ))}
                </div> */}
                <div className="arrow-container-left">
-                  <button onClick={() => goToBook(currentBookIndex - 1)}>上一本故事</button>
+                  <button onClick={() => goToBook(currentBookIndex - 1)} className="leftbutton-style">  上一本故事  </button>
                   {/* <button onClick={() => goToBook(currentBookIndex + 1)}> ^ↀᴥↀ^  下一頁</button> */}
                </div>
                <div className="arrow-container-right">
-                  <button onClick={() => goToBook(currentBookIndex + 1)}>下一本故事</button>
+                  <button onClick={() => goToBook(currentBookIndex + 1)} className="rightbutton-style">下一本故事</button>
                </div>
             </div>
             <div className="right-area">
