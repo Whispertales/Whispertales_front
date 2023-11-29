@@ -13,8 +13,12 @@ export default function Story() {
    const [images, setImages] = useState<string[]>([]);
    const [voices, setVoices] = useState<string[]>([]);
    const [demoLoaded, setDemoLoaded] = useState(false);
-   const [buttonIds] = useState<books[]>(booksShow);
+   const [buttonIds, setButtonIds] = useState<books[] | null>();
    const [currentBookIndex, setCurrentBookIndex] = useState(0);
+
+   // Allbooks().then((booksFDB: books[] | null) => {
+   //    booksFDB ? setButtonIds(booksFDB) : setButtonIds([]);
+   // });
 
    const getStoryData = async () => {
       let storyData = await GetStoryData(storyId)
@@ -29,10 +33,12 @@ export default function Story() {
    }
 
    function goToBook(index: number) {
-      if (index >= 0 && index < buttonIds.length) {
+      if (buttonIds && index >= 0 && index < buttonIds.length) {
          setStoryId(buttonIds[index].storyId);
          setCurrentBookIndex(index);
          setDemoLoaded(false); // 禁用所有其他按钮，直到新资源加载完成
+      }else{
+         console.log(`buttonIds == null`);
       }
    }
 
@@ -44,8 +50,10 @@ export default function Story() {
    };
 
    const handleRightClick = () => {
-      if (currentBookIndex < buttonIds.length - 1) {
+      if (buttonIds && currentBookIndex < buttonIds.length - 1) {
          setCurrentBookIndex(currentBookIndex + 1);
+      }else{
+         console.log(`buttonIds == null`);
       }
    };
 
@@ -119,6 +127,18 @@ export default function Story() {
    }
 
    useEffect(() => {
+   
+      const getAllBooksFDB = async () => {
+         try {
+            const booksFDB = await Allbooks();
+            setButtonIds(booksFDB || []);
+            // console.log(`ButtonIds = ${JSON.stringify(buttonIds)}`);
+         } catch (error) {
+            console.error(`Error in Story component: ${error}`);
+         }
+      };
+      getAllBooksFDB();
+      
       // Clear images and voices state
       setImages([]);
       setVoices([]);
@@ -138,24 +158,18 @@ export default function Story() {
       demobooks3();
       demovoices3();
       setDemoLoaded(false);
-   }, [storyId]);
+   }, [storyId, buttonIds]);
 
+   const show = () =>{
+      console.log(`buttonIds = ${buttonIds}`);
+      return JSON.stringify(buttonIds);
+   }
 
    return (
       <div className="background">
+         {/* {show()} */}
          <div className="container">
             <div className="left-area">
-               {/* <div className="button-area">
-                  {buttonIds.map((val, index) => (
-                     <button
-                        key={val.storyId}
-                        onClick={() => handle_ID_ButtonClick(val.storyId)}
-                        disabled={currentBookIndex === index}
-                     >
-                        {val.storyName}
-                     </button>
-                  ))}
-               </div> */}
                <div className="arrow-container-left">
                   <button onClick={() => goToBook(currentBookIndex - 1)} className="leftbutton-style">  上一本故事  </button>
                   {/* <button onClick={() => goToBook(currentBookIndex + 1)}> ^ↀᴥↀ^  下一頁</button> */}

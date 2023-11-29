@@ -14,6 +14,7 @@ export const enum apis {
     demobpic = `http://localhost:7943/demobpic`,
     storyvoice = `http://localhost:7943/storyvoice`,
     NewestStoryId = `http://localhost:7943/story/newstoryid`,
+    getAllBooks = `http://localhost:7943/story/getbooks`,
 
 
     // //use 192.168.1.26

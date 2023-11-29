@@ -1,6 +1,8 @@
+import { getAllBooksFDB } from "./fetch";
+
 export interface books {
-   storyId: string;
    storyName: string;
+   storyId: string;
 }
 
 export let booksShow: books[] = [
@@ -14,6 +16,10 @@ export let booksShow: books[] = [
    },
 ];
 
-export const Allbooks = () =>{
-
-}
+export const Allbooks = async() => {
+   const books:books[] | null = await getAllBooksFDB();
+   // if (books){
+   //    console.log(`books = ${JSON.stringify(books)}`);
+   // }
+   return books;
+};

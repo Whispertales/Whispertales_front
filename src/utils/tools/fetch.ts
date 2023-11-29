@@ -1,8 +1,9 @@
 import { apis } from "./api";
+import { books } from "./books";
 
 //拿到英文的 生成圖片的prompt
 export async function GetImagePrompt(userPrompt: string): Promise<any> {
-    let playload:object={
+    let playload: object = {
         prompt: userPrompt
     }
     try {
@@ -89,7 +90,7 @@ export async function GetStoryData(_id: string): Promise<any> {
             },
         })
         const data = await response.json();
-        return data.storyTale; 
+        return data.storyTale;
     } catch (e) {
         console.log(`GetStory try fail ${e}`)
     }
@@ -146,3 +147,20 @@ export const getdvoices = async (story_id: string, picnum: number) => {
     }
 };
 
+//拿全部的書
+export const getAllBooksFDB = async () => {
+    try {
+        const response = await fetch(apis.getAllBooks, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+        const data:books[] = await response.json(); 
+        return data;
+    } catch (e) {
+        console.error(`getAllBooksFDB in fetch fail e: ${e}`);
+        return null;
+    }
+
+}
