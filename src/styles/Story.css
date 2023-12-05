@@ -1,15 +1,4 @@
-/* html,
-body {
-   margin: 0;
-   padding: 0;
-   height: 100%;
-} */
-
-/* .container {
-   display: flex;
-   height: 100%;
-} */
-.background{
+.background {
    background-image: url('../Assets/170108.jpg');
    background-size: cover;
    background-position: center center;
@@ -19,11 +8,35 @@ body {
    position: fixed;
    top: 0;
    left: 0;
-   z-index: -1; 
+   z-index: -1;
 }
-.container {
-   /* border: 1px solid #ccc; */
 
+/* .container {
+   padding: 10px;
+   max-width: 1020px;
+   height: 100%;
+   margin: 20px auto;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   overflow-y: auto;
+} */
+
+.container {
+   padding: 10px;
+   max-width: 1020px;
+   margin: 20px auto;
+   display: flex;
+   flex-direction: column;
+   justify-content:start;
+   align-items: center;
+   max-height: 95%;
+   overflow-y: scroll;
+}
+
+
+.little-container {
    padding: 10px;
    max-width: 1020px;
    margin: 20px auto;
@@ -32,36 +45,6 @@ body {
    justify-content: center;
    align-items: center;
 }
-
-.left-area {
-   width: 140px;
-   padding: 5px;
-}
-
-/* .right-area {
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
-   width: 100%;
-} */
-
-/* .right-left {
-   top: 0px;
-   width: 50%;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   padding-right: 3px;
-} */
-
-/* .right-right {
-   top: 0px;
-   width: 50%;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   padding-left: 3px;
-} */
 
 .image-container {
    background-color: white;
@@ -73,21 +56,13 @@ body {
    justify-content: center;
 }
 
+
+
 .button-container button {
    width: 100%;
    height: 100%;
-   
-}
 
-/* .button-area {
-   display: flex;
-   flex-direction: column;
 }
-
-.button-area button {
-   margin-bottom: 10px;
-   width: 100px;
-} */
 
 .audio-container {
    width: 100%;
@@ -97,21 +72,6 @@ body {
 audio {
    width: 75%;
 }
-
-/* .text-container {
-   background-color: rgb(255, 255, 255);
-   height:70px;
-   width: 500px;
-   text-align: left;
-   padding-top: 10px;
-   padding-bottom: 10px;
-   overflow: hidden;
-}
-
-.text-container span {
-   display: block;
-} */
-
 
 .arrow-container-left {
    position: fixed;
@@ -143,26 +103,31 @@ audio {
    padding: 4px;
 }
 
-.leftbutton-style{
+.leftbutton-style {
    background-color: #52858c;
    border-radius: 20px;
    color: white;
-   border-color:white;
-   width: 200px; /* 設置按鈕的寬度 */
-   padding: 10px; /* 可以根據需要調整內邊距 */
+   border-color: white;
+   width: 200px;
+   /* 設置按鈕的寬度 */
+   padding: 10px;
+   /* 可以根據需要調整內邊距 */
    text-align: center;
    /*padding-right:100px;
    padding-left: 100px;
    margin: 0 10px;
    width: 200px;*/
 }
-.rightbutton-style{
+
+.rightbutton-style {
    background-color: #E7775D;
    border-radius: 20px;
    color: white;
-   border-color:white;
-   width: 200px; /* 設置按鈕的寬度 */
-   padding: 10px; /* 可以根據需要調整內邊距 */
+   border-color: white;
+   width: 200px;
+   /* 設置按鈕的寬度 */
+   padding: 10px;
+   /* 可以根據需要調整內邊距 */
    text-align: center;
    /*padding-right:100px;
    padding-left: 100px;

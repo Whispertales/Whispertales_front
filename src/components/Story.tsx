@@ -13,7 +13,7 @@ export default function Story() {
    const [images, setImages] = useState<string[]>([]);
    const [voices, setVoices] = useState<string[]>([]);
    const [demoLoaded, setDemoLoaded] = useState(false);
-   const [buttonIds, setButtonIds] = useState<books[] | null>();
+   const [buttonIds, setButtonIds] = useState<books[]>();
    const [currentBookIndex, setCurrentBookIndex] = useState(0);
 
    // Allbooks().then((booksFDB: books[] | null) => {
@@ -21,6 +21,7 @@ export default function Story() {
    // });
 
    const getStoryData = async () => {
+      // console.log(`storyId = ${storyId}`);
       let storyData = await GetStoryData(storyId)
       setShowStory(storyData)
       try {
@@ -38,24 +39,24 @@ export default function Story() {
          setCurrentBookIndex(index);
          setDemoLoaded(false); // 禁用所有其他按钮，直到新资源加载完成
       }else{
-         console.log(`buttonIds == null`);
+         console.log(`buttonIds == null []`);
       }
    }
 
 
-   const handleLeftClick = () => {
-      if (currentBookIndex > 0) {
-         setCurrentBookIndex(currentBookIndex - 1);
-      }
-   };
+   // const handleLeftClick = () => {
+   //    if (currentBookIndex > 0) {
+   //       setCurrentBookIndex(currentBookIndex - 1);
+   //    }
+   // };
 
-   const handleRightClick = () => {
-      if (buttonIds && currentBookIndex < buttonIds.length - 1) {
-         setCurrentBookIndex(currentBookIndex + 1);
-      }else{
-         console.log(`buttonIds == null`);
-      }
-   };
+   // const handleRightClick = () => {
+   //    if (buttonIds && currentBookIndex < buttonIds.length - 1) {
+   //       setCurrentBookIndex(currentBookIndex + 1);
+   //    }else{
+   //       console.log(`buttonIds == null []`);
+   //    }
+   // };
 
    // 正式使用，調用gpt生成圖片
    // const testGetImage0 = async () => {
@@ -110,19 +111,22 @@ export default function Story() {
 
    const demoShowpic = () => {
       let aa = [];
-
       for (let i = 0; i < paragraphs.length; i++) {
-         aa.push(
-            <div key={i} className='container'>
-               <img src={images[i]} alt={`這是第${i}張圖片`} style={{ width: '1000px' }} />
-               <br />
-               <div style={{ fontSize: '20px', fontFamily: 'Microsoft JhengHei' }}>{paragraphs[i]}</div>
-               <br />
-               <audio src={voices[i]} autoPlay={false} controls></audio>
-            </div>
-         );
-      }
+         try{
+            aa.push(
+               <div key={i} className='little-container'>
+                  <img src={images[i]} alt={`這是第${i}張圖片`} style={{ color: 'black' }} />
+                  <br />
+                  <div style={{ fontSize: '20px', fontFamily: 'Microsoft JhengHei', color:'black'}}>{paragraphs[i]}</div>
+                  <br />
+                  <audio src={voices[i]} autoPlay={false} controls></audio>
+               </div>
+            );
+         }catch{
 
+         }
+         
+      }
       return aa;
    }
 
@@ -138,15 +142,7 @@ export default function Story() {
          }
       };
       getAllBooksFDB();
-      
-      // Clear images and voices state
-      setImages([]);
-      setVoices([]);
-
-      // Load new images and voices data
-      demobooks3();
-      demovoices3();
-   }, [paragraphs]);
+   }, [paragraphs, buttonIds]);
 
    useEffect(() => {
       // Clear images and voices state
@@ -158,10 +154,12 @@ export default function Story() {
       demobooks3();
       demovoices3();
       setDemoLoaded(false);
-   }, [storyId, buttonIds]);
+   }, [storyId]);
 
    const show = () =>{
-      console.log(`buttonIds = ${buttonIds}`);
+      buttonIds?.forEach(val=>{
+         console.log(`storyId: ${val.storyId}, storyName: ${val.storyName}`);
+      })
       return JSON.stringify(buttonIds);
    }
 
@@ -169,7 +167,7 @@ export default function Story() {
       <div className="background">
          {/* {show()} */}
          <div className="container">
-            <div className="left-area">
+            <div>
                <div className="arrow-container-left">
                   <button onClick={() => goToBook(currentBookIndex - 1)} className="leftbutton-style">  上一本故事  </button>
                   {/* <button onClick={() => goToBook(currentBookIndex + 1)}> ^ↀᴥↀ^  下一頁</button> */}
@@ -178,7 +176,7 @@ export default function Story() {
                   <button onClick={() => goToBook(currentBookIndex + 1)} className="rightbutton-style">下一本故事</button>
                </div>
             </div>
-            <div className="right-area">
+            <div>
                <div>{demoShowpic()}</div>
             </div>
          </div>

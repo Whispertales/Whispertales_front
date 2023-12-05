@@ -159,8 +159,8 @@ export const getAllBooksFDB = async () => {
         const data:books[] = await response.json(); 
         return data;
     } catch (e) {
-        console.error(`getAllBooksFDB in fetch fail e: ${e}`);
-        return null;
+        console.log(`getAllBooksFDB in fetch fail e: ${e}`);
+        return [];
     }
 
 }

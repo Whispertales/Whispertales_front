@@ -17,7 +17,7 @@ export let booksShow: books[] = [
 ];
 
 export const Allbooks = async() => {
-   const books:books[] | null = await getAllBooksFDB();
+   const books:books[] = await getAllBooksFDB();
    // if (books){
    //    console.log(`books = ${JSON.stringify(books)}`);
    // }

@@ -9,7 +9,7 @@ export const enum apis {
     PostStory = `http://localhost:7943/story`,
     GetSleep = `http://localhost:7943/sleep`,
     
-    GetStoryFdb = `http://localhost:7943/getstoryfdb`,
+    GetStoryFdb = `http://localhost:7943/story/getstoryfdb`,
     getimageprmopt = `http://localhost:7943/postimageprompt`,
     demobpic = `http://localhost:7943/demobpic`,
     storyvoice = `http://localhost:7943/storyvoice`,
