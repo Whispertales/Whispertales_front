@@ -115,7 +115,7 @@ export default function Story() {
          try{
             aa.push(
                <div key={i} className='little-container'>
-                  <img src={images[i]} alt={`這是第${i}張圖片`} style={{ color: 'black' }} />
+                  <img src={images[i]} alt={`這是第${i}張圖片`} style={{ maxWidth: '1020px', color: 'black' }} />
                   <br />
                   <div style={{ fontSize: '20px', fontFamily: 'Microsoft JhengHei', color:'black'}}>{paragraphs[i]}</div>
                   <br />
