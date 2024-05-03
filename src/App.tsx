@@ -4,8 +4,10 @@ import Instruction from './view/Instruction';
 import UserSetting from './view/UserSetting';
 import Faq from './view/Faq';
 import AboutUs from './view/AboutUs';
+
 import Story from './components/Story';
 import Generate from './components/Generate';
+import TestA from "./components/TestA";
 
 function App() {
   return (
@@ -20,6 +22,9 @@ function App() {
           </Route>
 
           <Route path="/">
+            {/* http://localhost:666/test */}
+            <Route path='testA' element={<TestA />}></Route>
+
             {/* http://localhost:666/instruction */}
             <Route path='instruction' element={<Instruction />}></Route>
             {/* {http://localhost:666/user_setting} */}

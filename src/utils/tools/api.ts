@@ -16,6 +16,8 @@ export const enum apis {
     NewestStoryId = `http://localhost:7943/story/newstoryid`,
     getAllBooks = `http://localhost:7943/story/getbooks`,
 
+    //以下為測試功能
+    GetNewaudio = `http://163.13.201.153:9880`
 
     // //use 192.168.1.26
     // ImageBase64Url = `http://192.168.1.26:7943/image`,
