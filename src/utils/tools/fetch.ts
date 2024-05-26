@@ -96,20 +96,26 @@ export async function GetStoryData(_id: string): Promise<any> {
     }
 }
 
-//把想生成的故事訊息傳到後端(留)
+//把想生成的故事訊息傳到後端(留) N
 export async function PostStory(Storytail: Object): Promise<any> {
+    console.log(`Storytail = ${JSON.stringify(Storytail)}`);
     try {
-        fetch(apis.PostStory, {
+        const response = await fetch(apis.PostStory, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(Storytail)
-        })
-            .then(() => console.log(`PostStory post success`))
-            .catch((e) => console.log(`PostStory post fail: ${e}`))
+        });
+        if (response.ok) {
+
+            console.log(`PostStory post success, response = ${response}`);
+        } else {
+            throw new Error('PostStory post fail');
+        }
     } catch (e) {
-        console.log(`GetStory try fail ${e}`)
+        console.error(`PostStory error: ${e}`);
+        throw e;
     }
 }
 
