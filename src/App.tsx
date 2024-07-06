@@ -7,7 +7,9 @@ import AboutUs from './view/AboutUs';
 
 import Story from './components/Story';
 import Generate from './components/Generate';
+import Creating from "./components/Creating";
 import TestA from "./components/TestA";
+import Voice from "./components/Voice";
 
 function App() {
   return (
@@ -16,9 +18,14 @@ function App() {
         <Routes>
           <Route path="/generate">
             {/** http://localhost:666/generate */}
-            <Route path="" element={<Generate />} ></Route>
-            {/** http://localhost:666/generate/story */}
-            <Route path="story" element={<Story/>}></Route>
+            <Route index element={<Generate />} ></Route>
+            {/* * http://localhost:666/generate/story
+            <Route path="story" element={<Story/>}></Route> */}
+            {/** http://localhost:666/generate/creating */}
+            <Route path="creating" element={<Creating />}></Route>
+            {/** http://localhost:666/generate/voice */}
+            <Route path="voice" element={<Voice />}></Route>
+
           </Route>
 
           <Route path="/">
