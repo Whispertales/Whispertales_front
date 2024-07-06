@@ -10,6 +10,7 @@ import Generate from './components/Generate';
 import Creating from "./components/Creating";
 import TestA from "./components/TestA";
 import Voice from "./components/Voice";
+import Advanced from "./components/advanced";
 
 function App() {
   return (
@@ -19,10 +20,10 @@ function App() {
           <Route path="/generate">
             {/** http://localhost:666/generate */}
             <Route index element={<Generate />} ></Route>
-            {/* * http://localhost:666/generate/story
-            <Route path="story" element={<Story/>}></Route> */}
             {/** http://localhost:666/generate/creating */}
             <Route path="creating" element={<Creating />}></Route>
+            {/** http://localhost:666/generate/creating/advanced */}
+            <Route path="creating/advanced" element={<Advanced />}></Route>
             {/** http://localhost:666/generate/voice */}
             <Route path="voice" element={<Voice />}></Route>
 
