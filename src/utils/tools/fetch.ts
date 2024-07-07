@@ -1,10 +1,37 @@
-import { apis } from "./api";
+import { apis } from './api'; // 假設這是你的 API 配置文件的路徑
 
-export async function GenStory():Promise<any>{
+// 定義 GenStory 函數，它接收 RoleForm 對象並返回 Promise
+export async function GenStory(RoleForm: Object): Promise<any> {
     let playload = {
-        
+        roleform: RoleForm
+    }
+    try {
+        // 發送 POST 請求到 LLMGenStory API
+        const response = await fetch(apis.LLMGenStory, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(playload)
+        });
+
+        // 檢查 response 是否成功
+        if (response.ok) {  // Response 對象具有 `ok` 屬性
+            const responseData = await response.json(); // 解析 JSON 數據
+            console.log('成功提交數據:', responseData);
+            return 0;
+        } else {
+            // 錯誤處理
+            console.error('提交失敗:', response.statusText);
+            return null; // 返回 null 以表示提交失敗
+        }
+    } catch (error) {
+        // 捕獲並處理異常
+        console.error('提交時出錯:', error);
+        return 1; // 返回 null 以表示捕獲到異常
     }
 }
+
 
 // //拿到英文的 生成圖片的prompt
 // export async function GetImagePrompt(userPrompt: string): Promise<any> {

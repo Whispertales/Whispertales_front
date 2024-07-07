@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { GenStory } from "../utils/tools/fetch";
 
 // 示例的選項數據，可以根據實際情況調整
 const options = [
@@ -12,7 +13,6 @@ const options = [
 ];
 
 const Advanced: React.FC = () => {
-    // 使用 useLocation 來獲取當前的 URL
     const location = useLocation();
 
     // 獲取 URL 查詢參數
@@ -25,7 +25,6 @@ const Advanced: React.FC = () => {
     // 狀態變量
     const [selectedStyle, setSelectedStyle] = useState<string>(searchQuery); // 預設選中值為 searchQuery
     const [character1, setCharacter1] = useState<string>('');
-    const [character2, setCharacter2] = useState<string>('');
     const [description, setDescription] = useState<string>('');
     const [characters, setCharacters] = useState<string[]>(['']); // 初始為一個空字符串，表示一個角色輸入框
 
@@ -39,6 +38,26 @@ const Advanced: React.FC = () => {
         const newCharacters = [...characters];
         newCharacters.splice(index, 1); // 從陣列中移除指定索引的角色
         setCharacters(newCharacters);
+    };
+
+    // 提交數據的函數
+    const handleSubmit = async () => {
+        const data = {
+            style: selectedStyle,
+            mainCharacter: character1,
+            description,
+            otherCharacters: characters.filter((character) => character !== '') // 過濾空字符
+        };
+
+        console.log(`RoleForm = ${JSON.stringify(data)}`);
+
+        const result = await GenStory(data);
+
+        if (result) {
+            console.log('API 回應:', result);
+        } else {
+            console.error('提交失敗或出錯');
+        }
     };
 
     return (
@@ -68,7 +87,6 @@ const Advanced: React.FC = () => {
                 />
             </div>
 
-            {/* 增加動態角色輸入框 */}
             {characters.map((character, index) => (
                 <div key={index}>
                     <label htmlFor={`character${index + 2}`}>{`角色 ${index + 2} `}</label>
@@ -91,8 +109,7 @@ const Advanced: React.FC = () => {
                 </div>
             ))}
 
-            {/* 增加角色按鈕 */}
-            <button  onClick={addCharacter}>
+            <button onClick={addCharacter}>
                 增加角色
             </button>
 
@@ -106,15 +123,7 @@ const Advanced: React.FC = () => {
                 />
             </div>
 
-            <button onClick={() => {
-                // 可以在這裡處理提交邏輯
-                alert(`提交的信息：
-                風格: ${selectedStyle}
-                主角: ${character1}
-                次要角色: ${character2}
-                描述: ${description}
-                其他角色: ${characters.filter((character) => character !== '').join(', ')}`); // 過濾空字符並串聯角色名字
-            }}>
+            <button onClick={handleSubmit}>
                 提交
             </button>
         </div>
