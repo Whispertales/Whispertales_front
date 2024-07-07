@@ -2,23 +2,12 @@
 
 export const enum apis {
     //dev
-    ImageBase64Url = `http://localhost:7943/image`, //(post) to get image Base64 code
-    SocketioServer = `http://localhost:2764`,
-    // GetImagePrompt = `http://localhost:7943/prompt`,
-    GetImagePrompt = `http://localhost:7943/image/prompt`,
-
-    PostStory = `http://localhost:7943/story`,
-    GetSleep = `http://localhost:7943/sleep`,
+    GetStoryList = `http://localhost:7943/story/getstorylist_fdb`,
+    LLMGenStory = `http://localhost:7943/story/llm/genstory`,
+    GenImagePrompt = `http://localhost:7943/story/llm/genimageprompt`,
     
-    GetStoryFdb = `http://localhost:7943/story/getstoryfdb`,
-    getimageprmopt = `http://localhost:7943/postimageprompt`,
-    demobpic = `http://localhost:7943/demobpic`,
-    storyvoice = `http://localhost:7943/storyvoice`,
-    NewestStoryId = `http://localhost:7943/story/newstoryid`,
-    getAllBooks = `http://localhost:7943/story/getbooks`,
-
     //以下為測試功能
-    GetNewaudio = `http://163.13.201.153:9880`
+    GetNewaudio = `http://163.13.202.120:9880`
 
     // //use 192.168.1.26
     // ImageBase64Url = `http://192.168.1.26:7943/image`,

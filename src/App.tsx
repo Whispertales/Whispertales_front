@@ -5,12 +5,10 @@ import UserSetting from './view/UserSetting';
 import Faq from './view/Faq';
 import AboutUs from './view/AboutUs';
 
-import Story from './components/Story';
 import Generate from './components/Generate';
 import Creating from "./components/Creating";
-import TestA from "./components/TestA";
 import Voice from "./components/Voice";
-import Advanced from "./components/advanced";
+import Advanced from "./components/Advanced";
 
 function App() {
   return (
@@ -22,7 +20,7 @@ function App() {
             <Route index element={<Generate />} ></Route>
             {/** http://localhost:666/generate/creating */}
             <Route path="creating" element={<Creating />}></Route>
-            {/** http://localhost:666/generate/creating/advanced */}
+            { }
             <Route path="creating/advanced" element={<Advanced />}></Route>
             {/** http://localhost:666/generate/voice */}
             <Route path="voice" element={<Voice />}></Route>
@@ -30,9 +28,6 @@ function App() {
           </Route>
 
           <Route path="/">
-            {/* http://localhost:666/test */}
-            <Route path='testA' element={<TestA />}></Route>
-
             {/* http://localhost:666/instruction */}
             <Route path='instruction' element={<Instruction />}></Route>
             {/* {http://localhost:666/user_setting} */}
