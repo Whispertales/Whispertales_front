@@ -1,7 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 import { useNavigate } from 'react-router-dom';
-
-import { PostStory } from '../utils/tools/fetch';
 import '../styles/Generate.css';
 
 export default function Generate() {
@@ -16,7 +14,6 @@ export default function Generate() {
       e.preventDefault();
 
       navigate('/generate/story', { state: { storyInfo: storyInfo } });
-      PostStory(playload)
    }
 
    let playload = {
