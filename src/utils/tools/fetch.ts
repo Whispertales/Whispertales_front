@@ -32,6 +32,17 @@ export async function GenStory(RoleForm: Object): Promise<any> {
     }
 }
 
+export async function GetALLSDModel():Promise<any>{
+    try{    
+        const response = await fetch(apis.getAllSDModel)
+        if(!response.ok){
+            throw new Error(`GetALLSDModel error! status: ${response.status}`);
+        }
+        const option_json = await response.json();
+    }catch(error){
+
+    }
+}
 
 // //拿到英文的 生成圖片的prompt
 // export async function GetImagePrompt(userPrompt: string): Promise<any> {

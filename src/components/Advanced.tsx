@@ -1,16 +1,10 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { GenStory } from "../utils/tools/fetch";
+import { sdmodel, sdmodel_list } from "../utils/sdmodel_list";
 
 // 示例的選項數據，可以根據實際情況調整
-const options = [
-    '貓咪',
-    '帥貓咪',
-    '鯊魚',
-    '恐龍',
-    '愛心',
-    '皮卡丘',
-];
+const options: sdmodel[] = sdmodel_list;
 
 const Advanced: React.FC = () => {
     const location = useLocation();
@@ -19,8 +13,8 @@ const Advanced: React.FC = () => {
     const searchParams = new URLSearchParams(location.search);
     const searchQuery = searchParams.get('query') || '無搜索內容';
 
-    // 初始化風格選項，包括 searchQuery 和 options
-    const styleOptions = [searchQuery, ...options];
+    // 初始化風格選項，包括 searchQuery 和 options 中的 show_name
+    const styleOptions = [searchQuery, ...options.map(option => option.show_name)];
 
     // 狀態變量
     const [selectedStyle, setSelectedStyle] = useState<string>(searchQuery); // 預設選中值為 searchQuery
