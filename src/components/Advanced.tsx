@@ -2,6 +2,11 @@ import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { GenStory } from "../utils/tools/fetch";
 import { sdmodel, sdmodel_list } from "../utils/sdmodel_list";
+import '../styles/Advanced.css';
+
+
+
+
 
 // 示例的選項數據，可以根據實際情況調整
 const options: sdmodel[] = sdmodel_list;
@@ -55,73 +60,108 @@ const Advanced: React.FC = () => {
     };
 
     return (
-        <div>
-            <div>
-                <label htmlFor="style">風格</label>
-                <select
-                    value={selectedStyle}
-                    onChange={(e) => setSelectedStyle(e.target.value)}
-                >
-                    {styleOptions.map((option, index) => (
-                        <option key={index} value={option}>
-                            {option}
-                        </option>
+        <div className="container">
+            <h2 className="title">WHISPER TALES</h2>
+
+            <div className="main-content">
+                <div className="form-container">
+                    <div>
+                        <label htmlFor="style">風 格 :  </label>
+                        <select
+                            style={{
+                                width: '195px',
+                            }}
+                            value={selectedStyle}
+                            onChange={(e) => setSelectedStyle(e.target.value)}
+                        >
+                            {styleOptions.map((option, index) => (
+                                <option key={index} value={option}>
+                                    {option}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                    <br />
+                    <div>
+                        <label htmlFor="character1">角色 1   </label>
+                        <input
+                            style={{
+                                width: '190px',
+                            }}
+                            id="character1"
+                            type="text"
+                            value={character1}
+                            onChange={(e) => setCharacter1(e.target.value)}
+                            placeholder="輸入主角名字"
+                        />
+                    </div>
+
+                    {characters.map((character, index) => (
+                        <div key={index} className="character-controls">
+                            <label htmlFor={`character${index + 2}`}>{`角色 ${index + 2} `}</label>
+                            <input
+                                style={{
+                                    width: '190px',
+                                }}
+                                id={`character${index + 2}`}
+                                type="text"
+                                value={character}
+                                onChange={(e) => {
+                                    const newCharacters = [...characters];
+                                    newCharacters[index] = e.target.value;
+                                    setCharacters(newCharacters);
+                                }}
+                                placeholder={`輸入角色 ${index + 2} 名字`}
+                            />
+                            <button onClick={() => removeCharacter(index)}>
+                                減少角色
+                            </button>
+                        </div>
                     ))}
-                </select>
-            </div>
 
-            <div>
-                <label htmlFor="character1">角色 1 (主角名字) </label>
-                <input
-                    id="character1"
-                    type="text"
-                    value={character1}
-                    onChange={(e) => setCharacter1(e.target.value)}
-                    placeholder="輸入主角名字"
-                />
-            </div>
+                    <div className="character-controls">
+                        <button onClick={addCharacter}>
+                            增加角色
+                        </button>
+                    </div>
+                    <br></br>
+                    <br></br>
+                    <div className="textarea-container">
+                        <label htmlFor="description" className="textarea-label">內容</label>
+                        <textarea
+                            id="description"
+                            style={{
+                                width: '190px',
+                                height: '220px'
+                            }}
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
+                            placeholder="輸入故事描述"
+                        />
+                    </div>
 
-            {characters.map((character, index) => (
-                <div key={index}>
-                    <label htmlFor={`character${index + 2}`}>{`角色 ${index + 2} `}</label>
-                    <input
-                        id={`character${index + 2}`}
-                        type="text"
-                        value={character}
-                        onChange={(e) => {
-                            const newCharacters = [...characters];
-                            newCharacters[index] = e.target.value;
-                            setCharacters(newCharacters);
-                        }}
-                        placeholder={`輸入角色 ${index + 2} 名字`}
-                    />
+
                     <button
-                        onClick={() => removeCharacter(index)}
+                        onClick={handleSubmit}
+                        className="submit-button"
                     >
-                        減少角色
+                        生成
                     </button>
                 </div>
-            ))}
 
-            <button onClick={addCharacter}>
-                增加角色
-            </button>
-
-            <div>
-                <label htmlFor="description">內容</label>
-                <textarea
-                    id="description"
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                    placeholder="輸入故事描述"
-                />
+                <div className="card-Advanced">
+                    <div className="imgBox">
+                        <img src="book1.png" width="300" height="400" />
+                    </div>
+                    <div className="contents">
+                        {/* Other content */}
+                    </div>
+                </div>
             </div>
-
-            <button onClick={handleSubmit}>
-                提交
-            </button>
         </div>
     );
+
+
 };
 
 export default Advanced;

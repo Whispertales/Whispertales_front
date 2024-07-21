@@ -12,14 +12,18 @@ export default function Creating() {
     const navigate = useNavigate();
 
     const handleSearch = () => {
-        // 將用戶重定向到指定的URL，並附加搜索查詢
         if (searchQuery.trim()) {
             navigate(`/generate/creating/advanced?query=${encodeURIComponent(searchQuery)}`);
         } else {
             alert('請輸入搜索內容');
         }
     };
- // 處理選項圖片點擊事件
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+        if (event.key === 'Enter') {
+            handleSearch();
+        }
+    };
+
     const handleOptionClick = (value: string) => {
         setSearchQuery(value);
     };
@@ -43,12 +47,15 @@ export default function Creating() {
                             type="text"
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
+                            onKeyDown={handleKeyDown}
                             placeholder="輸入搜索內容"
                             className="form-control border-left-0 rounded-pill"
                         />
+                        {/* 
                         <div className="input-group-append">
                             <button onClick={handleSearch} className="button-submit">搜索</button>
                         </div>
+                        */}
                     </div>
                 </div>
             </div>
