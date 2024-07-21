@@ -1,0 +1,62 @@
+/* styles.css */
+/*.container {
+    height: 862px;
+    width: 1440px;
+    margin: 0 auto; /* 使容器居中 
+    background-color: RGB(231,232,238);
+
+}*/
+.container-fluid {
+    height: 862px;
+    width: 100%;
+    background-color: RGB(231,232,238);
+    padding: 0; /* 移除所有内边距 */
+    margin: 0; /* 移除所有外边距 */
+}
+
+.header {
+    height: 64px;
+    background-color: #89ace7; /* 可以根据需要更改背景颜色 */
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #dee2e6;
+    color: #ffffff;
+}
+
+.header-content {
+    margin-left: 64px; /* 内部内容离左边64像素 */
+    width: calc(100% - 64px); /* 确保内部内容的宽度 */
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.button-submit {
+    color: #3B505B;
+    text-align: center;
+    font-family: 'Microsoft Sans Serif';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 96px;
+    height: 50px;
+    display: inline-flex;
+    padding: 13px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 481px;
+    border-radius: 50px;
+    background: rgba(197, 209, 211, 0.51);
+    border-color: white;
+  }
+  .body-content {
+    margin-left: 64px; /* 内部内容离左边64像素 */
+    margin-right: 64px;
+    width: calc(100% - 128px); /* 确保内部内容的宽度 */
+    /*font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;*/
+}
