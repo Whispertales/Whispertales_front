@@ -16,25 +16,25 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/generate">
-            {/** http://localhost:666/generate */}
+            {/** http://localhost:3151/generate */}
             <Route index element={<Generate />} ></Route>
-            {/** http://localhost:666/generate/creating */}
+            {/** http://localhost:3151/generate/creating */}
             <Route path="creating" element={<Creating />}></Route>
             { }
             <Route path="creating/advanced" element={<Advanced />}></Route>
-            {/** http://localhost:666/generate/voice */}
+            {/** http://localhost:3151/generate/voice */}
             <Route path="voice" element={<Voice />}></Route>
 
           </Route>
 
           <Route path="/">
-            {/* http://localhost:666/instruction */}
+            {/* http://localhost:3151/instruction */}
             <Route path='instruction' element={<Instruction />}></Route>
-            {/* {http://localhost:666/user_setting} */}
+            {/* {http://localhost:3151/user_setting} */}
             <Route path='user_setting' element={<UserSetting />}></Route>
-            {/* {http://localhost:666/faq} */}
+            {/* {http://localhost:3151/faq} */}
             <Route path='faq' element={<Faq />}></Route>
-            {/* {http://localhost:666/about_us} */}
+            {/* {http://localhost:3151/about_us} */}
             <Route path='about_us' element={<AboutUs />}></Route>
           </Route>
 
