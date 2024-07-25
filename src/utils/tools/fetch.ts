@@ -1,3 +1,4 @@
+import { storyInterface } from "../../components/StartStory";
 import { apis } from './api'; // 假設這是你的 API 配置文件的路徑
 
 // 定義 GenStory 函數，它接收 RoleForm 對象並返回 Promise
@@ -38,9 +39,28 @@ export async function GetALLSDModel():Promise<any>{
         if(!response.ok){
             throw new Error(`GetALLSDModel error! status: ${response.status}`);
         }
-        const option_json = await response.json();
+        const option_json= await response.json();
     }catch(error){
+    }
+}
 
+export async function StartStory_api(storyIdinput:string):Promise<any>{
+    try {
+        const response = await fetch(apis.startStory, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ "storyId":storyIdinput })
+        });
+        if (!response.ok) {
+            throw new Error(`StartStory_api error! status: ${response.status}`);
+        }
+        const option_json:storyInterface = await response.json();
+        return option_json;
+    } catch (error) {
+        console.error('StartStory_api, Failed to fetch story:', error);
+        throw error;
     }
 }
 
