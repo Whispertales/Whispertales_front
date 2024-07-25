@@ -9,6 +9,7 @@ import Generate from './components/Generate';
 import Creating from "./components/Creating";
 import Voice from "./components/Voice";
 import Advanced from "./components/Advanced";
+import StartStory from "./components/StartStory";
 
 function App() {
   return (
@@ -22,6 +23,8 @@ function App() {
             <Route path="creating" element={<Creating />}></Route>
             { }
             <Route path="creating/advanced" element={<Advanced />}></Route>
+            {/** http://localhost:3151/generate/creating/advanced/startStory */}
+            <Route path="creating/advanced/startStory" element={<StartStory />}></Route>
             {/** http://localhost:3151/generate/voice */}
             <Route path="voice" element={<Voice />}></Route>
 

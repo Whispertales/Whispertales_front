@@ -1,38 +1,28 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { GenStory } from "../utils/tools/fetch";
 import { sdmodel, sdmodel_list } from "../utils/sdmodel_list";
 import '../styles/Advanced.css';
 
-
-
-
-
-// 示例的選項數據，可以根據實際情況調整
 const options: sdmodel[] = sdmodel_list;
 
 const Advanced: React.FC = () => {
     const location = useLocation();
-
-    // 獲取 URL 查詢參數
     const searchParams = new URLSearchParams(location.search);
     const searchQuery = searchParams.get('query') || '無搜索內容';
-
-    // 初始化風格選項，包括 searchQuery 和 options 中的 show_name
     const styleOptions = [searchQuery, ...options.map(option => option.show_name)];
+    const navigate = useNavigate();
 
-    // 狀態變量
     const [selectedStyle, setSelectedStyle] = useState<string>(searchQuery); // 預設選中值為 searchQuery
     const [character1, setCharacter1] = useState<string>('');
     const [description, setDescription] = useState<string>('');
     const [characters, setCharacters] = useState<string[]>(['']); // 初始為一個空字符串，表示一個角色輸入框
+    const [storyId, setStoryId] = useState<string>('66a0eb80a821da8424003ad5');
 
-    // 增加角色的函數
     const addCharacter = () => {
         setCharacters([...characters, '']); // 添加一個空字符串到角色陣列中
     };
 
-    // 減少角色的函數
     const removeCharacter = (index: number) => {
         const newCharacters = [...characters];
         newCharacters.splice(index, 1); // 從陣列中移除指定索引的角色
@@ -59,10 +49,13 @@ const Advanced: React.FC = () => {
         }
     };
 
+    const handleStartStory = () => {
+        navigate(`/generate/creating/advanced/startStory?query=${encodeURIComponent(storyId)}`);
+    }
+
     return (
         <div className="container">
             <h2 className="title">WHISPER TALES</h2>
-
             <div className="main-content">
                 <div className="form-container">
                     <div>
@@ -140,11 +133,9 @@ const Advanced: React.FC = () => {
                         />
                     </div>
 
-
                     <button
                         onClick={handleSubmit}
-                        className="submit-button"
-                    >
+                        className="submit-button">
                         生成
                     </button>
                 </div>
@@ -155,6 +146,7 @@ const Advanced: React.FC = () => {
                     <div className="contents">
                     </div>
                 </div> */}
+                <button onClick={handleStartStory}>開始聆聽</button>
             </div>
         </div>
     );
