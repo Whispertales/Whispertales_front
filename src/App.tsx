@@ -27,7 +27,6 @@ function App() {
             <Route path="creating/advanced/startStory" element={<StartStory />}></Route>
             {/** http://localhost:3151/generate/voice */}
             <Route path="voice" element={<Voice />}></Route>
-
           </Route>
 
           <Route path="/">
