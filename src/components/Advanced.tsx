@@ -148,15 +148,13 @@ const Advanced: React.FC = () => {
                         生成
                     </button>
                 </div>
-
-                <div className="card-Advanced">
+                {/* <div className="card-Advanced">
                     <div className="imgBox">
                         <img src="book1.png" width="300" height="400" />
                     </div>
                     <div className="contents">
-                        {/* Other content */}
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
     );
