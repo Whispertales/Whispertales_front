@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { StartStory_api } from '../utils/tools/fetch';
+import { StartStory_api, GetVoice } from '../utils/tools/fetch';
 import '../styles/StartStory.css';
 
 export interface storyInterface {
@@ -22,13 +22,27 @@ const StartStory: React.FC = () => {
     const [loading, setLoading] = useState(true);
     const [pageIndex, setPageIndex] = useState(0);
     const navigate = useNavigate();
+    const audioRef = useRef<HTMLAudioElement | null>(null);
+    const [isPlaying, setIsPlaying] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 if (storyId) {
+                    setLoading(true);
                     const storyData = await StartStory_api(storyId);
                     setData(storyData);
+
+                    const audioBlob = await GetVoice(storyId);
+                    const audioUrl = URL.createObjectURL(audioBlob);
+                    if (audioRef.current) {
+                        audioRef.current.src = audioUrl;
+                    } else {
+                        audioRef.current = new Audio(audioUrl);
+                        audioRef.current.addEventListener('play', () => setIsPlaying(true));
+                        audioRef.current.addEventListener('pause', () => setIsPlaying(false));
+                        audioRef.current.addEventListener('ended', () => setIsPlaying(false));
+                    }
                 } else {
                     setError('No storyId provided in the query parameters.');
                 }
@@ -38,9 +52,17 @@ const StartStory: React.FC = () => {
                 setLoading(false);
             }
         };
-
         fetchData();
-    }, [storyId]); // storyId 作为依赖项，确保它变更时重新运行
+
+        // 清理函數
+        return () => {
+            if (audioRef.current) {
+                audioRef.current.removeEventListener('play', () => setIsPlaying(true));
+                audioRef.current.removeEventListener('pause', () => setIsPlaying(false));
+                audioRef.current.removeEventListener('ended', () => setIsPlaying(false));
+            }
+        };
+    }, [storyId]);
 
     const handleNextPage = () => {
         if (data && data.image_base64 && pageIndex < data.image_base64.length - 2) {
@@ -62,6 +84,18 @@ const StartStory: React.FC = () => {
     const BackPage = () => {
         navigate(`/generate/creating`);
     };
+    
+    const handleVoiceClick = () => {
+        if (audioRef.current) {
+            if (audioRef.current.paused) {
+                audioRef.current.play();
+                setIsPlaying(true);
+            } else {
+                audioRef.current.pause();
+                setIsPlaying(false);
+            }
+        }
+    };
 
     const formatText = (text: string, charsPerLine: number) => {
         let formattedText = '';
@@ -75,6 +109,10 @@ const StartStory: React.FC = () => {
     return (
         <div className='containerbook'>
             <button onClick={BackPage} className="button-back">返回</button>
+            <button onClick={handleVoiceClick} className="button-audio">
+                {isPlaying ? 'Pause' : 'Play'}
+            </button>
+
             {data ? (
                 <div className='book'>
                     {/*<p>{data.storyInfo}</p> 故事主題*/}

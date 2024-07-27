@@ -48,9 +48,9 @@ export default function Creating() {
                             onChange={(e) => setSearchQuery(e.target.value)}
                             onKeyDown={handleKeyDown}
                             placeholder="輸入搜索內容"
-                            className="form-control border-left-0 rounded-pill custom-search-input "
+                            readOnly
+                                    className="form-control border-left-0 rounded-pill custom-search-input non-editable"
                         />
-                         
                         <div className="input-group-append">
                             <button onClick={handleSearch} className="button-submit">搜索</button>
                         </div>

@@ -19,8 +19,8 @@ export async function GenStory(RoleForm: Object): Promise<any> {
         // 檢查 response 是否成功
         if (response.ok) {  // Response 對象具有 `ok` 屬性
             const responseData = await response.json(); // 解析 JSON 數據
-            console.log('成功提交數據:', responseData);
-            return 0;
+            // console.log('成功提交數據:', responseData);
+            return responseData;
         } else {
             // 錯誤處理
             console.error('提交失敗:', response.statusText);
@@ -60,6 +60,31 @@ export async function StartStory_api(storyIdinput:string):Promise<any>{
         return option_json;
     } catch (error) {
         console.error('StartStory_api, Failed to fetch story:', error);
+        throw error;
+    }
+}
+
+export async function GetVoice(storyId: string): Promise<Blob> {
+    try {
+        const playload = {
+            "storyId": storyId
+        }
+        const response = await fetch(apis.GetVoice, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(playload)
+        });
+
+        if (!response.ok) {
+            throw new Error(`GetVoice error! status: ${response.status}`);
+        }
+
+        return await response.blob();
+
+    } catch (error) {
+        console.error('GetVoice, Failed to fetch audio:', error);
         throw error;
     }
 }

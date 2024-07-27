@@ -13,36 +13,37 @@ const Advanced: React.FC = () => {
     const styleOptions = [searchQuery, ...options.map(option => option.show_name)];
     const navigate = useNavigate();
 
-    const [selectedStyle, setSelectedStyle] = useState<string>(searchQuery); // 預設選中值為 searchQuery
+    const [selectedStyle, setSelectedStyle] = useState<string>(searchQuery);
     const [character1, setCharacter1] = useState<string>('');
     const [description, setDescription] = useState<string>('');
-    const [characters, setCharacters] = useState<string[]>(['']); // 初始為一個空字符串，表示一個角色輸入框
-    const [storyId, setStoryId] = useState<string>('66a0eb80a821da8424003ad5');
+    const [characters, setCharacters] = useState<string[]>(['']);
+    const [storyId, setStoryId] = useState<string>('66a52f72b5993b79132a3fac');
+    const [isGenerated, setIsGenerated] = useState<boolean>(false);
 
     const addCharacter = () => {
-        setCharacters([...characters, '']); // 添加一個空字符串到角色陣列中
+        setCharacters([...characters, '']);
     };
 
     const removeCharacter = (index: number) => {
         const newCharacters = [...characters];
-        newCharacters.splice(index, 1); // 從陣列中移除指定索引的角色
+        newCharacters.splice(index, 1);
         setCharacters(newCharacters);
     };
 
-    // 提交數據的函數
     const handleSubmit = async () => {
         const data = {
             style: selectedStyle,
             mainCharacter: character1,
             description,
-            otherCharacters: characters.filter((character) => character !== '') // 過濾空字符
+            otherCharacters: characters.filter((character) => character !== '')
         };
 
         console.log(`RoleForm = ${JSON.stringify(data)}`);
 
         const result = await GenStory(data);
-
-        if (result) {
+        if (result && result.success) { // Check if result exists and success is true
+            setIsGenerated(true);
+            setStoryId(result.storyId);
             console.log('API 回應:', result);
         } else {
             console.error('提交失敗或出錯');
@@ -58,15 +59,12 @@ const Advanced: React.FC = () => {
             <div className="header">
                 <div className="header-content">WHISPER TALES</div>
             </div>
-            
             <div className="main-content">
                 <div className="form-container">
                     <div>
-                        <label htmlFor="style">風 格 :  </label>
+                        <label htmlFor="style">風 格 : </label>
                         <select
-                            style={{
-                                width: '195px',
-                            }}
+                            style={{ width: '195px' }}
                             value={selectedStyle}
                             onChange={(e) => setSelectedStyle(e.target.value)}
                         >
@@ -79,11 +77,9 @@ const Advanced: React.FC = () => {
                     </div>
                     <br />
                     <div>
-                        <label htmlFor="character1">角色 1   </label>
+                        <label htmlFor="character1">角色 1 </label>
                         <input
-                            style={{
-                                width: '190px',
-                            }}
+                            style={{ width: '190px' }}
                             id="character1"
                             type="text"
                             value={character1}
@@ -94,11 +90,9 @@ const Advanced: React.FC = () => {
 
                     {characters.map((character, index) => (
                         <div key={index} className="character-controls">
-                            <label htmlFor={`character${index + 2}`}>{`角色 ${index + 2} `}</label>
+                            <label htmlFor={`character${index + 2}`}>{`角色 ${index + 2}`}</label>
                             <input
-                                style={{
-                                    width: '190px',
-                                }}
+                                style={{ width: '190px' }}
                                 id={`character${index + 2}`}
                                 type="text"
                                 value={character}
@@ -109,52 +103,32 @@ const Advanced: React.FC = () => {
                                 }}
                                 placeholder={`輸入角色 ${index + 2} 名字`}
                             />
-                            <button onClick={() => removeCharacter(index)}>
-                                減少角色
-                            </button>
-
+                            <button onClick={() => removeCharacter(index)}>減少角色</button>
                         </div>
                     ))}
                     <div className="character-controls">
-                        <button onClick={addCharacter}>
-                            增加角色
-                         </button>
+                        <button onClick={addCharacter}>增加角色</button>
                     </div>
-                    <br></br>
-                    <br></br>
+                    <br />
+                    <br />
                     <div className="textarea-container">
                         <label htmlFor="description" className="textarea-label">內容</label>
                         <textarea
                             id="description"
-                            style={{
-                                width: '190px',
-                                height: '220px'
-                            }}
+                            style={{ width: '190px', height: '220px' }}
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
                             placeholder="輸入故事描述"
                         />
                     </div>
-
-                    <button
-                        onClick={handleSubmit}
-                        className="submit-button">
-                        生成
-                    </button>
+                    <button onClick={handleSubmit} className="submit-button">生成</button>
                 </div>
-                {/* <div className="card-Advanced">
-                    <div className="imgBox">
-                        <img src="book1.png" width="300" height="400" />
-                    </div>
-                    <div className="contents">
-                    </div>
-                </div> */}
-                <button onClick={handleStartStory}>開始聆聽</button>
+                {isGenerated && (
+                    <button onClick={handleStartStory}>開始聆聽</button>
+                )}
             </div>
         </div>
     );
-
-
 };
 
 export default Advanced;

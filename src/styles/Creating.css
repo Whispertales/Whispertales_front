@@ -6,6 +6,10 @@
     background-color: RGB(231,232,238);
 
 }*/
+.non-editable {
+    cursor: not-allowed;
+}
+
 .container-fluid {
     height: 100%;
     /*height: 862px;*/
