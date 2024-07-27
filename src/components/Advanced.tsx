@@ -54,8 +54,11 @@ const Advanced: React.FC = () => {
     }
 
     return (
-        <div className="container">
-            <h2 className="title">WHISPER TALES</h2>
+        <div className="container-fluid">
+            <div className="header">
+                <div className="header-content">WHISPER TALES</div>
+            </div>
+            
             <div className="main-content">
                 <div className="form-container">
                     <div>
@@ -109,13 +112,13 @@ const Advanced: React.FC = () => {
                             <button onClick={() => removeCharacter(index)}>
                                 減少角色
                             </button>
+
                         </div>
                     ))}
-
                     <div className="character-controls">
                         <button onClick={addCharacter}>
                             增加角色
-                        </button>
+                         </button>
                     </div>
                     <br></br>
                     <br></br>

@@ -1,0 +1,120 @@
+.containerbook {
+    margin: 0;
+    padding: 0;
+    /*background-image: url('/src/images/backgroundbook.jpg');
+    /*background-size: cover;
+    /*background-size: contain;  確保背景圖片等比縮小*/
+    /*background-color: rgb(231, 232, 238);*/
+    background-position: center;
+    background-color: rgb(231, 232, 238);
+    box-sizing: border-box;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.button-back {
+    color: #ffffff;
+    text-align: center;
+    font-family: 'Microsoft Sans Serif';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 96px;
+    height: 50px;
+    display: inline-flex;
+    padding: 13px 16px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    background: rgb(63,95,144);
+    border: none;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+}
+
+.button-Previous-Next-Page {
+    color: rgb(63,95,144);
+    text-align: center;
+    font-family: 'Microsoft Sans Serif';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 96px;
+    height: 50px;
+    display: inline-flex;
+    padding: 13px 16px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    background: rgba(197, 209, 211, 0.51);
+    border: none;
+    cursor: pointer;
+    border: 2px solid rgb(120, 120, 138);
+}
+
+.book {
+    width: 80%;
+    max-width: 1200px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.book-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.page {
+    text-align: center;
+    width: 48%;
+}
+
+.story-image {
+    max-width: 100%;
+    height: auto;
+    margin: 10px 0;
+}
+
+.navigation-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.navigation-buttons {
+    /*position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);*/
+}
+
+.left-navigation {
+    /*position: absolute;
+    left: 20px;*/
+}
+
+.right-navigation {
+    /*position: absolute;
+    right: 20px;*/
+}
+.pre{
+    font-size: 20px;
+}
