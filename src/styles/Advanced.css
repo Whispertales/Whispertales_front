@@ -1,100 +1,128 @@
-.container {
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     background-color: rgb(231, 232, 238);
-
 }
 
-/*標題 whispertale*/
-h2.title {
-    padding: 10px;
+.container {
+    height: 100%;
+    width: 100%;
+    background-color: RGB(231, 232, 238);
+    padding: 0;
+    margin: 0;
+}
+
+.header {
+    height: 64px;
+    width: 120%;
     background-color: #89ace7;
-    color: white;
-    text-indent: 120px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #dee2e6;
+    color: #ffffff;
 }
 
-/*按鈕*/
+/* 按鈕 */
 button {
-    cursor: pointer;
-    padding: 5px 10px;
+    color: rgb(63, 95, 144);
+    text-align: center;
+    font-family: 'Microsoft Sans Serif';
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 96px;
+    height: 50px;
+    display: inline-flex;
+    padding: 13px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 481px;
+    border-radius: 50px;
+    background: rgba(197, 209, 211, 0.51);
+    border-color: white;
 }
 
-/*調整文字區塊大小對齊*/
+.character-controls {
+    margin-left: 80%;
+}
+
+/* 調整文字區塊大小對齊 */
 .textarea-container {
     display: flex;
     align-items: flex-start;
     gap: 10px;
-
 }
 
 .textarea-label {
-    display: flex;
-    align-items: flex-start;
+    display: inline-block;
+    width: 100px;
+    text-align: right;
     margin-right: 10px;
-
+    font-size: 18px;
 }
 
-/*生成按鈕的位移量*/
+/* 生成按鈕的位移量 */
 .submit-button {
-    margin-left: 120px;
+    margin-left: 40%;
+    /* Adjust this value as needed for alignment */
 }
 
-/*翻頁動畫和將書本置右*/
-body {
-    margin: 0;
-    padding: 0;
-    background: url(background.jpg) no-repeat;
-    background-size: cover;
-    box-sizing: border-box;
+.label-spacing {
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.last-label {
+    margin-bottom: 0;
 }
 
 .main-content {
-    display: flex;
-    justify-content: space-between;
-    max-width: 1000px;
-    margin: 0 auto;
-    height: 92vh;
+    display: grid;
+    grid-template-columns: max-content auto;
+    gap: 10px;
+    align-items: center;
+}
 
+.label-row {
+    display: flex;
+    align-items: center;
 }
 
 .form-container {
-    flex: 1;
-    margin-right: 20px;
-}
-
-.card-Advanced {
     display: flex;
-    position: relative;
-    width: 300px;
-    height: 400px;
-    transform-style: preserve-3d;
-    transform: perspective(2000px);
-    background: #fff;
-    box-shadow: inset 300px 0 50px rgba(0, 0, 0, 0.5);
-    transition: 1s;
+    flex-direction: column;
+    gap: 15px;
 }
 
-.card-Advanced:hover {
-    transform: perspective(2000px);
-    box-shadow: inset 20px 0 50px rgba(0, 0, 0, 0.5);
+.input-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.card-Advanced .imgBox {
-    flex: 1;
-    position: relative;
-    width: 100%;
+.v-line {
+    border-left: thin solid #000;
     height: 100%;
-    border: 1px solid #000;
-    transform-origin: left;
-    z-index: 1;
-    transition: 2s;
-}
-
-.card-Advanced:hover .imgBox {
-    transform: rotateY(-160deg);
-}
-
-.card-Advanced .contents {
+    left: 50%;
     position: absolute;
-    top: 0;
-    left: 0;
-    padding: 30px;
+}
+
+.image-container {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px;
+}
+
+.image-container img {
+    width: 300px;
+    /* 調整這裡來設置圖片的寬度 */
+    height: auto;
 }
