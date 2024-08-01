@@ -15,7 +15,7 @@
     /*height: 862px;*/
     width: 100%;
     /*width: 1440px;*/
-    background-color: RGB(231,232,238);
+    background-color: rgb(231,232,238);
     padding: 0; /* 移除所有内边距 */
     margin: 0; /* 移除所有外边距 */
 }

@@ -112,7 +112,6 @@ const StartStory: React.FC = () => {
             <button onClick={handleVoiceClick} className="button-audio">
                 {isPlaying ? 'Pause' : 'Play'}
             </button>
-
             {data ? (
                 <div className='book'>
                     {/*<p>{data.storyInfo}</p> 故事主題*/}
@@ -127,7 +126,7 @@ const StartStory: React.FC = () => {
                                     />
                                     
                                     <pre className='pre'><br/>{storyLines[pageIndex * 2 + index]}</pre> {/* 句子內容*/}
-                                    <pre className='pre'>{storyLines[pageIndex * 2 + index + 1]}</pre>
+                                    <pre className='pre'>{storyLines[pageIndex * 2 + index +1]}</pre>
                                 </div>
                             ))}
                         </div>
