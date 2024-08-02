@@ -41,7 +41,7 @@ const Advanced: React.FC = () => {
         console.log(`RoleForm = ${JSON.stringify(data)}`);
 
         const result = await GenStory(data);
-        if (result && result.success) { // Check if result exists and success is true
+        if (result && result.success) {
             setIsGenerated(true);
             setStoryId(result.storyId);
             console.log('API 回應:', result);
@@ -56,17 +56,23 @@ const Advanced: React.FC = () => {
 
     return (
         <div className="container-fluid">
-            <div className="header">
-                <div className="header-content">WHISPER TALES</div>
+            <div className="header text-center py-3">
+                <div className="header-content">
+                    WisperTales
+                </div>
             </div>
-            <div className="main-content">
-                <div className="form-container">
-                    <div>
-                        <label htmlFor="style">風 格 : </label>
+            <div className="container">
+                {/* 第一個區塊：垂直對齊到頂部，水平對齊到左邊 */}
+                <div className="row align-items-center mb-4">
+                    <div className="col-md-2 d-flex align-items-center">
+                        <label htmlFor="style" className="label-spacing">風 格 :</label>
+                    </div>
+                    <div className="col-md-4">
                         <select
-                            style={{ width: '195px' }}
+                            id="style"
                             value={selectedStyle}
                             onChange={(e) => setSelectedStyle(e.target.value)}
+                            className="form-control"
                         >
                             {styleOptions.map((option, index) => (
                                 <option key={index} value={option}>
@@ -75,24 +81,35 @@ const Advanced: React.FC = () => {
                             ))}
                         </select>
                     </div>
-                    <br />
-                    <div>
-                        <label htmlFor="character1">角色 1 </label>
+                </div>
+
+                {/* 第二個區塊：垂直對齊到中心，水平對齊到中心 */}
+                <div className="row align-items-center mb-4">
+                    <div className="col-md-2 d-flex align-items-center">
+                        <label htmlFor="character1" className="label-spacing">角色 1 :</label>
+                    </div>
+                    <div className="col-md-4">
                         <input
-                            style={{ width: '190px' }}
+                            style={{ backgroundColor: 'RGB(231, 232, 238)' }}
                             id="character1"
                             type="text"
                             value={character1}
                             onChange={(e) => setCharacter1(e.target.value)}
                             placeholder="輸入主角名字"
+
                         />
                     </div>
+                </div>
 
-                    {characters.map((character, index) => (
-                        <div key={index} className="character-controls">
-                            <label htmlFor={`character${index + 2}`}>{`角色 ${index + 2}`}</label>
+                {/* 動態角色區塊 */}
+                {characters.map((character, index) => (
+                    <div key={index} className="row align-items-center mb-4">
+                        <div className="col-md-2 d-flex align-items-center">
+                            <label htmlFor={`character${index + 2}`} className="label-spacing">{`角色 ${index + 2}`} :</label>
+                        </div>
+                        <div className="col-md-4 d-flex align-items-center">
                             <input
-                                style={{ width: '190px' }}
+                                style={{ backgroundColor: 'RGB(231, 232, 238)' }}
                                 id={`character${index + 2}`}
                                 type="text"
                                 value={character}
@@ -102,33 +119,59 @@ const Advanced: React.FC = () => {
                                     setCharacters(newCharacters);
                                 }}
                                 placeholder={`輸入角色 ${index + 2} 名字`}
+
                             />
-                            <button onClick={() => removeCharacter(index)}>減少角色</button>
+                            <button onClick={() => removeCharacter(index)} className="btn button-submit">減少角色</button>
                         </div>
-                    ))}
-                    <div className="character-controls">
-                        <button onClick={addCharacter}>增加角色</button>
+
                     </div>
-                    <br />
-                    <br />
-                    <div className="textarea-container">
-                        <label htmlFor="description" className="textarea-label">內容</label>
-                        <textarea
-                            id="description"
-                            style={{ width: '190px', height: '220px' }}
-                            value={description}
-                            onChange={(e) => setDescription(e.target.value)}
-                            placeholder="輸入故事描述"
-                        />
+                ))}
+
+                <div className="row align-items-center mb-4">
+                    <div className="col-md-2 d-flex align-items-center">
+                        <button onClick={addCharacter} className="btn button-submit">增加角色</button>
                     </div>
-                    <button onClick={handleSubmit} className="submit-button">生成</button>
                 </div>
-                {isGenerated && (
-                    <button onClick={handleStartStory}>開始聆聽</button>
-                )}
+                <div className="container">
+                    <div className="row align-items-start mb-4">
+                        <div className="col-md-2 d-flex align-items-end">
+                            <label htmlFor="description" className="textarea-label">內 容 :</label>
+                        </div>
+                        <div className="col-md-4 d-flex align-items-end">
+                            <textarea
+                                style={{ height: '450px', backgroundColor: 'RGB(231, 232, 238)' }}
+                                id="description"
+                                value={description}
+                                onChange={(e) => setDescription(e.target.value)}
+                                placeholder="輸入故事描述"
+
+                            />
+                        </div>
+                    </div>
+                    <div className="row mb-4">
+                        <div className="col-md-2 offset-md-2 text-center">
+                            <button onClick={handleSubmit} className="btn button-submit">生成</button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
+            {isGenerated && (
+                <button onClick={handleStartStory} className="btn btn-secondary">
+                </button>
+
+            )}
         </div>
     );
+
+
+
+
+
+
+
+
 };
 
 export default Advanced;
+
