@@ -104,8 +104,8 @@ const StartStory: React.FC = () => {
         }
         return formattedText;
     };
-    // TODO 修改\n 為\n\n 
     const storyLines = data?.storyTale.split('\n\n').map(line => formatText(line, 20)) || [];
+    console.log(`storyLines = ${storyLines}`);
 
     return (
         <div className='containerbook'>
@@ -126,8 +126,8 @@ const StartStory: React.FC = () => {
                                         className='story-image'
                                     />
                                     
-                                    <pre className='pre'><br/>{storyLines[pageIndex * 2 + index]}</pre> {/* 句子內容*/}
-                                    <pre className='pre'>{storyLines[pageIndex * 2 + index +1]}</pre>
+                                    <pre className='pre'><br/>{storyLines[pageIndex + index]}</pre> {/* 句子內容*/}
+                                    {/* <pre className='pre'>{storyLines[pageIndex*2 + index +1]}</pre> */}
                                 </div>
                             ))}
                         </div>
