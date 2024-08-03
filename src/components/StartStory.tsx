@@ -104,7 +104,8 @@ const StartStory: React.FC = () => {
         }
         return formattedText;
     };
-    const storyLines = data?.storyTale.split('\n').map(line => formatText(line, 20)) || [];
+    // TODO 修改\n 為\n\n 
+    const storyLines = data?.storyTale.split('\n\n').map(line => formatText(line, 20)) || [];
 
     return (
         <div className='containerbook'>

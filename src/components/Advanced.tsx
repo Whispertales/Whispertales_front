@@ -19,6 +19,8 @@ const Advanced: React.FC = () => {
     const [characters, setCharacters] = useState<string[]>(['']);
     const [storyId, setStoryId] = useState<string>('66a52f72b5993b79132a3fac');
     const [isGenerated, setIsGenerated] = useState<boolean>(false);
+    const [isLoad, setIsLoad] = useState<string>(''); // 是否在生成圖片
+    const [reLoad, setReLoad] = useState<boolean>(false); // 重新生成圖片控制器
 
     const addCharacter = () => {
         setCharacters([...characters, '']);
@@ -31,6 +33,7 @@ const Advanced: React.FC = () => {
     };
 
     const handleSubmit = async () => {
+        setIsLoad('loading');
         const data = {
             style: selectedStyle,
             mainCharacter: character1,
@@ -41,14 +44,23 @@ const Advanced: React.FC = () => {
         console.log(`RoleForm = ${JSON.stringify(data)}`);
 
         const result = await GenStory(data);
+        setIsLoad('finish');
         if (result && result.success) {
             setIsGenerated(true);
             setStoryId(result.storyId);
             console.log('API 回應:', result);
         } else {
+            setReLoad(true);
+            setIsLoad(''); 
             console.error('提交失敗或出錯');
         }
     };
+
+    const handleSubmitReGen = async() =>{
+        console.log("handleSubmitReGen");
+        handleSubmit();
+        setReLoad(false);
+    }
 
     const handleStartStory = () => {
         navigate(`/generate/creating/advanced/startStory?query=${encodeURIComponent(storyId)}`);
@@ -96,7 +108,6 @@ const Advanced: React.FC = () => {
                             value={character1}
                             onChange={(e) => setCharacter1(e.target.value)}
                             placeholder="輸入主角名字"
-
                         />
                     </div>
                 </div>
@@ -152,14 +163,19 @@ const Advanced: React.FC = () => {
                         <div className="col-md-2 offset-md-2 text-center">
                             <button onClick={handleSubmit} className="btn button-submit">生成</button>
                         </div>
+                        {reLoad &&(<div className="col-md-2 offset-md-2 text-center">
+                            <button onClick={handleSubmitReGen} className="btn button-submit">重新生成</button>
+                        </div>)}
                     </div>
                 </div>
 
             </div>
+            {isLoad === 'loading' && <p>loading</p>}
+            {isLoad === 'finish' && <p>load finish</p>}
             {isGenerated && (
                 <button onClick={handleStartStory} className="btn btn-secondary">
+                    開始聆聽故事
                 </button>
-
             )}
         </div>
     );
