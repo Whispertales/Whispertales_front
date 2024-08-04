@@ -15,7 +15,7 @@ export interface storyInterface {
 const StartStory: React.FC = () => {
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
-    const storyId = searchParams.get('query'); // 从 URL 中获取 storyId
+    const storyId = searchParams.get('query'); // 從 URL 中获取 storyId
 
     const [data, setData] = useState<storyInterface | null>(null);
     const [error, setError] = useState<string | null>(null);

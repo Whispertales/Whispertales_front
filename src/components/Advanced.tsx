@@ -33,9 +33,10 @@ const Advanced: React.FC = () => {
     };
 
     const handleSubmit = async () => {
+        const targetModel = options.find(model => model.show_name === selectedStyle);
         setIsLoad('loading');
         const data = {
-            style: selectedStyle,
+            style: targetModel?.sd_name || 'fantasyWorld_v10.safetensors',
             mainCharacter: character1,
             description,
             otherCharacters: characters.filter((character) => character !== '')
@@ -83,6 +84,7 @@ const Advanced: React.FC = () => {
                         <select
                             id="style"
                             value={selectedStyle}
+                            // onChange={handleChange}
                             onChange={(e) => setSelectedStyle(e.target.value)}
                             className="form-control"
                         >
@@ -179,14 +181,6 @@ const Advanced: React.FC = () => {
             )}
         </div>
     );
-
-
-
-
-
-
-
-
 };
 
 export default Advanced;
