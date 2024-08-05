@@ -10,9 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ksedline/turnjs": "^0.1.0",
     "bootstrap": "^5.3.3",
     "concurrently": "^8.2.2",
-    "jquery": "^3.7.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.4",
     "react-dom": "^18.2.0",
@@ -24,12 +24,8 @@
     "@types/node": "^20.14.11",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
-    "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "@vitejs/plugin-react": "^4.0.3",
-    "eslint": "^8.45.0",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.3",
     "sass": "^1.68.0",
     "typescript": "^5.0.2",
     "vite": "^4.4.5"

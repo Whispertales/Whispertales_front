@@ -12,7 +12,7 @@ export default function Creating() {
 
     const handleSearch = () => {
         if (searchQuery.trim()) {
-            navigate(`/generate/creating/advanced?query=${encodeURIComponent(searchQuery)}`);
+            navigate(`/advanced?query=${encodeURIComponent(searchQuery)}`);
         } else {
             alert('請輸入搜索內容');
         }

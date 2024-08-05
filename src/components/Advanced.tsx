@@ -64,7 +64,7 @@ const Advanced: React.FC = () => {
     }
 
     const handleStartStory = () => {
-        navigate(`/generate/creating/advanced/startStory?query=${encodeURIComponent(storyId)}`);
+        navigate(`/advanced/startStory?query=${encodeURIComponent(storyId)}`);
     }
 
     return (

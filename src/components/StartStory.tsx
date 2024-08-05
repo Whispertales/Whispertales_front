@@ -82,7 +82,7 @@ const StartStory: React.FC = () => {
     
 
     const BackPage = () => {
-        navigate(`/generate/creating`);
+        navigate(`/`);
     };
     
     const handleVoiceClick = () => {

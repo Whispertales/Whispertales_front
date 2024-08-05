@@ -16,15 +16,14 @@ function App() {
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path="/generate">
-            {/** http://localhost:3151/generate */}
-            <Route index element={<Generate />} ></Route>
-            {/** http://localhost:3151/generate/creating */}
-            <Route path="creating" element={<Creating />}></Route>
-            { }
-            <Route path="creating/advanced" element={<Advanced />}></Route>
-            {/** http://localhost:3151/generate/creating/advanced/startStory */}
-            <Route path="creating/advanced/startStory" element={<StartStory />}></Route>
+          <Route path="/">
+            {/** http://localhost:3151 */}
+            <Route path="" element={<Creating />}></Route>
+            {/** http://localhost:3151/advanced */}
+            <Route path="/advanced" element={<Advanced />}></Route>
+            {/** http://localhost:3151/advanced/startStory */}
+            <Route path="/advanced/startStory" element={<StartStory />}></Route>
+            
             {/** http://localhost:3151/generate/voice */}
             <Route path="voice" element={<Voice />}></Route>
           </Route>
