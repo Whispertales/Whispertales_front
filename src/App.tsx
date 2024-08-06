@@ -12,6 +12,7 @@ import Advanced from "./components/Advanced";
 import StartStory from "./components/StartStory";
 
 import MyBook from "./components/Mybook";
+import PdfTest from "./components/PdfTest";
 
 function App() {
   return (
@@ -32,6 +33,9 @@ function App() {
 
             {/**  http://localhost:3151/generate/mybook */}
             <Route path="mybook" index element={<MyBook />} ></Route>
+
+            {/**  http://localhost:3151/generate/PdfTest */}
+            <Route path="PdfTest" index element={<PdfTest />} ></Route>
           </Route>
 
           <Route path="/">
