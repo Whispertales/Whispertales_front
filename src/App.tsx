@@ -11,6 +11,8 @@ import Voice from "./components/Voice";
 import Advanced from "./components/Advanced";
 import StartStory from "./components/StartStory";
 
+import MyBook from "./components/Mybook";
+
 function App() {
   return (
     <div>
@@ -27,6 +29,9 @@ function App() {
             <Route path="creating/advanced/startStory" element={<StartStory />}></Route>
             {/** http://localhost:3151/generate/voice */}
             <Route path="voice" element={<Voice />}></Route>
+
+            {/**  http://localhost:3151/generate/mybook */}
+            <Route path="mybook" index element={<MyBook />} ></Route>
           </Route>
 
           <Route path="/">
