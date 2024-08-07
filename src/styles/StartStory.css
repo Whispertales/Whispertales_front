@@ -120,24 +120,26 @@
     width: 100%;
 }
 
-.navigation-buttons {
-    /*position: absolute;
-    top: 50%;
-    width: 100%;
+
+.pagefilp {
+    background-color: white;
+    border: 1px solid #c2c2c2;
     display: flex;
-    justify-content: space-between;
-    transform: translateY(-50%);*/
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
 }
 
-.left-navigation {
-    /*position: absolute;
-    left: 20px;*/
+.story-image {
+    max-width: 80%;
+    max-height: 60%;
+    object-fit: contain;
 }
 
-.right-navigation {
-    /*position: absolute;
-    right: 20px;*/
-}
-.pre{
-    font-size: 20px;
+.pre {
+    margin-top: 20px;
+    font-size: 14px;
+    text-align: left;
+    width: 80%;
 }

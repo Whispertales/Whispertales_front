@@ -1,53 +1,92 @@
-// App.js
-import React from 'react';
-import { pdf } from '@react-pdf/renderer';
-import { Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
+import React, { forwardRef, Ref, useState, useEffect } from "react";
+import HTMLFlipBook from "react-pageflip";
+import { Document, Page, pdfjs } from 'react-pdf';
+import pdffile from "../../Assets/bbb.pdf";
+import 'react-pdf/dist/esm/Page/TextLayer.css';
+import "../styles/MyBook.css";
 
-// Create styles
-const styles = StyleSheet.create({
-    page: {
-        flexDirection: 'row',
-        backgroundColor: '#E4E4E4',
-        padding: 20,
-    },
-    section: {
-        margin: 10,
-        padding: 10,
-        flexGrow: 1,
-    },
-});
+pdfjs.GlobalWorkerOptions.workerSrc = new URL('pdfjs-dist/build/pdf.worker.min.mjs', import.meta.url).toString();
 
-// Create Document Component
-const MyDocument = () => (
-    <Document>
-        <Page size="A4" style={styles.page}>
-            <View style={styles.section}>
-                <Text>Section #1</Text>
-            </View>
-            <View style={styles.section}>
-                <Text>Section #2</Text>
-            </View>
-        </Page>
-    </Document>
-);
+interface PagesProps {
+    children: React.ReactNode;
+    number: number;
+}
 
-const App = () => {
-    const generatePDF = async () => {
-        const blob = await pdf(<MyDocument />).toBlob();
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = 'example.pdf';
-        link.click();
-        URL.revokeObjectURL(url);
-    };
-
+const Pages = forwardRef<HTMLDivElement, PagesProps>((props, ref: Ref<HTMLDivElement>) => {
     return (
-        <div>
-            <h1>React PDF Example</h1>
-            <button onClick={generatePDF}>Generate and Download PDF</button>
+        <div className="demoPage" ref={ref}>
+            <h1>Page Header</h1>
+            <p>{props.children}</p>
+            <p>Page number: {props.number}</p>
         </div>
     );
-};
+});
 
-export default App;
+Pages.displayName = "Pages";
+
+
+
+function MyBook() {
+    const [numPages, setNumPages] = useState<number>(1);
+
+    function onDocumentLoadSuccess({ numPages }: { numPages: number }): void {
+        setNumPages(numPages);
+    }
+
+    useEffect(() => {
+        const loadingTask = pdfjs.getDocument(pdffile);
+        loadingTask.promise.then(pdf => {
+            setNumPages(pdf.numPages);
+        });
+    }, []);
+
+    return (
+        <>
+            <div className=" h-screen w-screen flex flex-col justify-center items-center bg-indigo-100">
+                <HTMLFlipBook
+                    style={{}}
+                    startPage={0}
+                    width={900}
+                    height={1000}
+                    drawShadow={true}
+                    flippingTime={10}
+                    usePortrait={false}
+                    startZIndex={0}
+                    autoSize={true}
+                    clickEventForward={true}
+                    useMouseEvents={true}
+                    swipeDistance={21}
+                    showPageCorners={false}
+                    disableFlipByClick={true}
+                    size="stretch"
+                    minWidth={900}
+                    maxWidth={700}
+                    minHeight={1000}
+                    maxHeight={1533}
+                    maxShadowOpacity={0.5}
+                    showCover={true}
+                    mobileScrollSupport={true}
+                    onFlip={() => { }}
+                    onChangeOrientation={() => { }}
+                    onChangeState={() => { }}
+                    className="demo-book"
+                >
+                    {
+                        numPages && [...Array(numPages).keys()].map((pg) => (
+                            <Pages key={pg} number={pg + 1}>
+                                <div>
+                                    <Document file={pdffile} onLoadSuccess={onDocumentLoadSuccess}>
+                                        <Page pageNumber={pg + 1} />
+                                    </Document>
+                                </div>
+                            </Pages>
+                        ))
+                    }
+                </HTMLFlipBook>
+            </div>
+        </>
+    );
+}
+
+export default MyBook;
+

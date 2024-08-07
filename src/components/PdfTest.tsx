@@ -1,7 +1,5 @@
-// App.js
-import React from 'react';
-import { pdf } from '@react-pdf/renderer';
-import { Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
+
+import { pdf, Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
 
 // Create styles
 const styles = StyleSheet.create({
@@ -31,7 +29,7 @@ const MyDocument = () => (
     </Document>
 );
 
-const App = () => {
+const PdfTest = () => {
     const generatePDF = async () => {
         const blob = await pdf(<MyDocument />).toBlob();
         const url = URL.createObjectURL(blob);
@@ -50,4 +48,4 @@ const App = () => {
     );
 };
 
-export default App;
+export default PdfTest;
