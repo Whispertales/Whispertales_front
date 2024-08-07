@@ -1,4 +1,4 @@
-html,
+
 body {
     height: 100%;
     margin: 0;
@@ -11,21 +11,21 @@ body {
     height: 100%;
     width: 100%;
     background-color: RGB(231, 232, 238);
-    padding: 0;
+    padding: 20px;
     margin: 0;
 }
 
 .header {
     height: 64px;
-    width: 120%;
+    width: 100%;
     background-color: #89ace7;
     display: flex;
     align-items: center;
     border-bottom: 1px solid #dee2e6;
     color: #ffffff;
+    padding: 0 20px;
 }
 
-/* �厰� */
 .button-submit {
     color: rgb(63, 95, 144);
     text-align: center;
@@ -40,138 +40,334 @@ body {
     padding: 13px 16px;
     justify-content: center;
     align-items: center;
-    gap: 481px;
+    border-radius: 50px;
+    background: rgba(197, 209, 211, 0.51);
+    border-color: white;
+}
+.button-secondary{
+    margin-top: 350px;
+    color: rgb(63, 95, 144);
+    text-align: center;
+    font-family: 'Microsoft Sans Serif';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 125px;
+    height: 50px;
+    display: inline-flex;
+    padding: 13px 16px;
+    justify-content: center;
+    align-items: center;
     border-radius: 50px;
     background: rgba(197, 209, 211, 0.51);
     border-color: white;
 }
 
-.character-controls {
-    margin-left: 80%;
-}
-
-/* 隤踵㟲�����憛𠰴之撠誩�朣� */
 .row {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start; /* 将justify-content设置为flex-start以左对齐内容 */
     align-items: center;
-    /* 撠漤��賊�: flex-start, flex-end, center, baseline, stretch */
 }
 
 .col {
     flex: 1 1 100%;
-    /* 100% 銵函內瘥誩�𧢲�雿滚銁撠讛攟撟閙��賣�雿娍遛�渲� */
-    max-width: 100%;
     padding: 10px;
 }
 
-@media(min-width: 800px) {
-    .col {
-        flex: 1 1 50%;
-        /* �其葉�Ｗ�����烾＊蝷箏��𧢲�雿� */
-    }
-}
-
-@media(min-width: 1024px) {
-    .col {
-        flex: 1 1 33.33%;
-        /* �典之�Ｗ�����烾＊蝷箔��𧢲�雿� */
-    }
-}
-
-
-/* ����厰����蝘駁� */
 .submit-button {
-    margin-left: 40%;
-    /* Adjust this value as needed for alignment */
+    margin-left: 10px;
 }
-
-
-
-.last-label {
-    margin-bottom: 0;
-}
-
-.main-content {
-    display: grid;
-    grid-template-columns: max-content auto;
-    gap: 10px;
-    align-items: center;
-}
-
-.label-row {
-    display: flex;
-    align-items: center;
-}
-
-.form-container {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.input-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
 
 .label-spacing {
     display: flex;
     align-items: center;
     margin-bottom: 0;
-    /* 隤踵㟲 margin */
+    margin-right: 10px;
 }
 
 .textarea-label {
     margin-bottom: 0;
-    /* Removes any bottom margin from the label */
     line-height: 1.5;
-    /* Adjusts line height if needed */
 }
 
 .form-control {
     width: 100%;
-    /* 蝣箔�銵典鱓�找辣撖砍漲�芷��� */
 }
 
 .btn {
     margin-top: 5px;
-    /* 蝣箔��厰��諹撓�交��梶��栞� */
+}
+.btn-secondary{
+    top: 50%;
+
 }
 
 input[type="text"],
 select,
 textarea {
     width: 100%;
-    /* 蝣箔�頛詨�獢���豢�獢�祝摨西䌊�拇� */
 }
 
-/* Ensure the flex container is responsive */
 .d-flex {
     display: flex;
     align-items: center;
 }
 
-/* Flex item to take available space */
 .flex-grow-1 {
     flex-grow: 1;
 }
 
-
-
-
-.grid-container {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 0.5rem;
-    /* Adjust spacing between input and button */
-    align-items: center;
+.content-container {
+    display: flex;
+    flex-wrap: wrap; /* 启用flex-wrap以实现响应式设计 */
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-left: 10px; /* 减少左侧的padding */
+    margin-top: 20px; /* 增加上方留白 */
 }
 
-.container-fluid {
-    padding-left: 0;
-    /* 蝖桐�瘝⊥�憸嘥����颲寡� */
+.form-section, .image-section {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start; /* 将justify-content设置为flex-start以左对齐内容 */
+    align-items: flex-start; /* 将内容对齐到顶部 */
+    padding: 20px;
+}
+
+.form-content {
+    width: 100%;
+    max-width: 600px;
+    margin-left: 10px; /* 左移内容 */
+    padding-top: 10px; /* 增加风格上方的留白 */
+}
+
+.image-container {
+    margin-top: 30px;
+    display: flex;
+    justify-content: flex-end; /* 将图片容器内容对齐到右边 */
+    align-items: center;
+    height: 100%;
+    width: 100%; /* 确保图片容器的宽度为100% */
+    padding-right: 10px; /* 可选：增加右侧的内边距 */
+}
+
+.preview-image {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    margin: 0 auto; /* 将图片居中对齐 */
+}
+
+/* 响应式设计媒体查询 */
+@media (max-width: 768px) {
+    .header {
+        height: auto;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .content-container {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .form-section, .image-section {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .form-content {
+        margin-left: 0;
+        padding-top: 20px;
+    }
+
+    .preview-image {
+        width: 100%;
+        height: auto;
+        max-width: none;
+    }
+
+    .button-submit {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        font-size: 14px;
+    }
+
+    .button-submit {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+/* Loading 样式 */
+.loading,
+.loading > div {
+    position: relative;
+    box-sizing: border-box;
+}
+
+.loading {
+    display: block;
+    font-size: 0;
+    color: #000;
+}
+
+.loading.la-dark {
+    color: #333;
+}
+
+.loading > div {
+    display: inline-block;
+    float: none;
+    background-color: currentColor;
+    border: 0 solid currentColor;
+}
+
+.loading {
+    width: 32px;
+    height: 32px;
+    margin: 0 auto;
+}
+
+.loading > div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    margin-top: -4px;
+    margin-left: -4px;
+    border-radius: 100%;
+    animation: ball-spin-clockwise 1s infinite ease-in-out;
+}
+
+.loading > div:nth-child(1) {
+    top: 5%;
+    left: 50%;
+    animation-delay: -0.875s;
+}
+
+.loading > div:nth-child(2) {
+    top: 18.1801948466%;
+    left: 81.8198051534%;
+    animation-delay: -0.75s;
+}
+
+.loading > div:nth-child(3) {
+    top: 50%;
+    left: 95%;
+    animation-delay: -0.625s;
+}
+
+.loading > div:nth-child(4) {
+    top: 81.8198051534%;
+    left: 81.8198051534%;
+    animation-delay: -0.5s;
+}
+
+.loading > div:nth-child(5) {
+    top: 94.9999999966%;
+    left: 50.0000000005%;
+    animation-delay: -0.375s;
+}
+
+.loading > div:nth-child(6) {
+    top: 81.8198046966%;
+    left: 18.1801949248%;
+    animation-delay: -0.25s;
+}
+
+.loading > div:nth-child(7) {
+    top: 49.9999750815%;
+    left: 5.0000051215%;
+    animation-delay: -0.125s;
+}
+
+.loading > div:nth-child(8) {
+    top: 18.179464974%;
+    left: 18.1803700518%;
+    animation-delay: 0s;
+}
+
+.loading.la-sm {
+    width: 16px;
+    height: 16px;
+}
+
+.loading.la-sm > div {
+    width: 4px;
+    height: 4px;
+    margin-top: -2px;
+    margin-left: -2px;
+}
+
+.loading.la-2x {
+    width: 64px;
+    height: 64px;
+}
+
+.loading.la-2x > div {
+    width: 16px;
+    height: 16px;
+    margin-top: -8px;
+    margin-left: -8px;
+}
+
+.loading.la-3x {
+    width: 96px;
+    height: 96px;
+}
+
+.loading.la-3x > div {
+    width: 24px;
+    height: 24px;
+    margin-top: -12px;
+    margin-left: -12px;
+}
+
+@keyframes ball-spin-clockwise {
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 0;
+        transform: scale(0);
+    }
+}
+
+/* 覆盖层样式 */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s;
+}
+
+.overlay.visible {
+    visibility: visible;
+    opacity: 1;
 }
